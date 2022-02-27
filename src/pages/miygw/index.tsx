@@ -1,5 +1,5 @@
 const Miygw = () => {
-  return <div>miygw is coming soon.</div>;
+  return <div className='dark:text-white'>miygw is coming soon.</div>;
 };
 
 export default Miygw;
