@@ -7,7 +7,7 @@ import { initializeTheme } from '../../lib/colorTheme';
 function MyApp({ Component, pageProps }: AppProps) {
   // TODO: <Head> の <title> に現在ページのディレクトリを渡したい
   return (
-    <div className='bg-white dark:bg-black' onLoad={initializeTheme}>
+    <div onLoad={initializeTheme}>
       {/* TODO: pageTitleは動的に取得するようにする。 */}
       <Meta pageTitle='' />
       <Layout>
