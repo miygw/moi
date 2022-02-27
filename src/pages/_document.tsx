@@ -1,17 +1,17 @@
-import { Head, Html, Main, NextScript } from "next/document";
+import { Head, Html, Main, NextScript } from 'next/document';
 
 // body 要素全体の背景色をコントロールしたいため定義している。
 const Document = () => {
-  return(
+  return (
     <Html>
-      <Head/>
+      <Head />
       {/* これが目的 */}
       <body className='bg-white dark:bg-black'>
-        <Main/>
-        <NextScript/>
+        <Main />
+        <NextScript />
       </body>
     </Html>
-  )
-}
+  );
+};
 
 export default Document;
