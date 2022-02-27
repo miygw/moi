@@ -5,8 +5,8 @@ const logoSize = '20px';
 const Footer = () => {
   // TODO: fix: ライトモードのときロゴが見えない
   return (
-    <footer className='text-center text-gray-400'>
-      <a className='gh' href='https://github.com/miygw'>
+    <footer className='text-center text-gray-400 my-12'>
+      <a className='m-4' href='https://github.com/miygw'>
         <Image
           src='/GitHub-Mark-Light-32px.png'
           alt='Octcat.png'
@@ -14,7 +14,7 @@ const Footer = () => {
           height={logoSize}
         />
       </a>
-      <a className='tw' href='https://twitter.com/6emcSYackedM6ar'>
+      <a className='m-4' href='https://twitter.com/6emcSYackedM6ar'>
         <Image
           src='/Twitter social icons - circle - white.png'
           alt='Twitter social icons - circle - white.png'
