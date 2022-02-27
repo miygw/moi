@@ -3,6 +3,7 @@ import Image from 'next/image';
 const logoSize = '20px';
 
 const Footer = () => {
+  // TODO: fix: ライトモードのときロゴが見えない
   return (
     <footer className='text-center text-gray-400'>
       <a className='gh' href='https://github.com/miygw'>
