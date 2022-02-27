@@ -11,8 +11,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       {/* TODO: pageTitleは動的に取得するようにする。 */}
       <Meta pageTitle='' />
       <Layout>
-        {/* TODO: Remove it */}
-        <div className='text-8xl'>Here is main block</div>
         <Component {...pageProps} />
       </Layout>
     </>
