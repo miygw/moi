@@ -18,11 +18,11 @@ export const themeContext = createContext<ThemeContext>(defaultContext);
 
 /**
  * サイト全体のカラーテーマを管理するカスタムフック
- * @returns 
  */
 export const useTheme = (): ThemeContext => {
   // state名はThemeContext typeのプロパティに合わせる。
-  const [dark, setDark] = useState(getIsDarkFromLocalStorage());
+  const initialIsDark = getIsDarkOnInitialize();
+  const [dark, setDark] = useState(initialIsDark);
   // 関数名はThemeContext typeのプロパティに合わせる。
   const setIsDark = useCallback((current: boolean): void => {
     setDark(current);
@@ -31,4 +31,9 @@ export const useTheme = (): ThemeContext => {
     dark,
     setIsDark,
   };
+};
+
+const getIsDarkOnInitialize = () => {
+  if (getIsDarkFromLocalStorage()) return true;
+  return getIsDarkFromLocalStorage();
 };

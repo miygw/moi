@@ -58,7 +58,7 @@ export const getIsDarkFromUserEnv = () => {
 /**
  * カラーテーマを設定する。
  */
-export const setIsDark = (isDark: boolean) => {
+export const applyIsDark = (isDark: boolean) => {
   console.log('called lib.setIsDark' + `isDark: ${isDark}`)
   if (isDark) {
     document.documentElement.classList.add(ColorTheme.dark);
@@ -76,9 +76,9 @@ export const setIsDark = (isDark: boolean) => {
 export const initializeTheme = () => {
   console.log('called lib.initializeTheme')
   if (getIsDarkFromUserEnv()) {
-    setIsDark(true);
+    applyIsDark(true);
     return;
   }
 
-  setIsDark(getIsDarkFromLocalStorage());
+  applyIsDark(getIsDarkFromLocalStorage());
 };
