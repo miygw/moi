@@ -1,5 +1,4 @@
 import { createContext, useCallback, useState } from 'react';
-import { getIsDarkFromLocalStorage, getIsDarkFromUserEnv } from '../lib/theme';
 
 // set context type
 type ThemeContext = {
