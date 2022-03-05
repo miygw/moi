@@ -27,17 +27,14 @@ export const getIsDarkFromLocalStorage = () => {
     typeof localStorage === 'undefined' ||
     typeof localStorage.theme === 'undefined'
   ) {
-    console.debug('Detect: localStorage.theme is unset.');
     return false;
   }
 
   if (localStorage.theme === ColorTheme.dark) {
-    console.debug(`Detect: localStorage.theme is ${ColorTheme.dark}.`);
     return true;
   }
 
   // localStorage.theme に値が設定されているが、'dark' でない場合は light テーマとする。
-  console.debug(`Detect: localStorage.theme is NOT ${ColorTheme.dark}.`);
   return false;
 };
 
@@ -47,11 +44,9 @@ export const getIsDarkFromLocalStorage = () => {
  */
 export const getIsDarkFromUserEnv = () => {
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    console.debug('Detect: User\'s prefer color scheme is dark')
     return true;
   }
 
-  console.debug('Detect: User\'s prefer color scheme is NOT dark')
   return false;
 };
 
@@ -59,7 +54,7 @@ export const getIsDarkFromUserEnv = () => {
  * カラーテーマを設定する。
  */
 export const applyIsDark = (isDark: boolean) => {
-  console.log('called lib.setIsDark' + `isDark: ${isDark}`)
+  console.log('called lib.setIsDark' + `isDark: ${isDark}`);
   if (isDark) {
     document.documentElement.classList.add(ColorTheme.dark);
     localStorage.theme = ColorTheme.dark;
@@ -74,7 +69,6 @@ export const applyIsDark = (isDark: boolean) => {
  * ユーザー環境またはローカルストレージのテーマ指定に基づいて初期化するテーマを決定する。
  */
 export const initializeTheme = () => {
-  console.log('called lib.initializeTheme')
   if (getIsDarkFromUserEnv()) {
     applyIsDark(true);
     return;

@@ -9,9 +9,7 @@ const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
   return (
     // 子コンポーネントによるコンテクストの更新を可能にするため、.Providerを利用する。
     // これを行わない場合、子コンポーネントはコンテクストの参照しかできない。
-    <themeContext.Provider value={context}>
-      {children}
-    </themeContext.Provider>
+    <themeContext.Provider value={context}>{children}</themeContext.Provider>
   );
 };
 

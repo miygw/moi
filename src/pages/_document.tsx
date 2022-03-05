@@ -5,11 +5,11 @@ const Document = () => {
   return (
     <Html>
       <Head />
-        {/* これが目的 */}
-        <body className='bg-white dark:bg-black'>
-          <Main />
-          <NextScript />
-        </body>
+      {/* これが目的 */}
+      <body className='bg-white dark:bg-black'>
+        <Main />
+        <NextScript />
+      </body>
     </Html>
   );
 };
