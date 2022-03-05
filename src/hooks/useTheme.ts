@@ -1,32 +1,28 @@
 import { createContext, useCallback, useState } from 'react';
+import { getIsDark } from '../lib/theme';
 
-// set context type
 type ThemeContext = {
-  dark: boolean;
+  isDark: boolean;
   setIsDark: (isDark: boolean) => void;
 };
 
-// context default value
-const defaultContext: ThemeContext = {
-  dark: false,
-  setIsDark: () => {},
-};
+const defaultIsDark = getIsDark();
 
-// context object
-export const themeContext = createContext<ThemeContext>(defaultContext);
+export const themeContext = createContext<ThemeContext>({
+  isDark: defaultIsDark,
+  setIsDark: () => {},
+});
 
 /**
  * サイト全体のカラーテーマを管理するカスタムフック
  */
-export const useTheme = (): ThemeContext => {
-  // state名はThemeContext typeのプロパティに合わせる。
-  const [dark, setDark] = useState(false);
-  // 関数名はThemeContext typeのプロパティに合わせる。
-  const setIsDark = useCallback((current: boolean): void => {
-    setDark(current);
+export const useThemeContext = (): ThemeContext => {
+  const [isDark, setIsDarkState] = useState(defaultIsDark);
+  const setIsDark = useCallback((currentIsDark: boolean): void => {
+    setIsDarkState(currentIsDark);
   }, []);
   return {
-    dark,
+    isDark,
     setIsDark,
   };
 };

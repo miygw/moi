@@ -7,8 +7,7 @@ const logoSize = '20px';
 
 const Footer = () => {
   const context = useContext(themeContext);
-  console.log(`themeDir: isDark = ${context.dark}`);
-  const themeDir = context.dark ? 'dark' : 'light';
+  const themeDir = context.isDark ? 'dark' : 'light';
   return (
     <footer className='text-center text-gray-400 my-12'>
       <a className='m-4' href='https://github.com/miygw'>

@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { themeContext } from '../hooks/useTheme';
-import { applyIsDark } from '../lib/theme';
+import { themeContext } from '../../hooks/useTheme';
+import { applyIsDark } from '../../lib/theme';
 
-const ColorThemeSwitch = () => {
+const ThemeChangeButton = () => {
   const context = useContext(themeContext);
   const themeChange = () => {
-    let nextTheme = !context.dark;
+    let nextTheme = !context.isDark;
     applyIsDark(nextTheme);
     context.setIsDark(nextTheme);
   };
@@ -23,4 +23,4 @@ const ColorThemeSwitch = () => {
   );
 };
 
-export default ColorThemeSwitch;
+export default ThemeChangeButton;
