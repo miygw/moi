@@ -13,13 +13,15 @@ export enum ColorTheme {
 /**
  * 現在のテーマを取得する。
  */
-export const getTheme = () => {
-  // TODO: OnLoad発火後でないとlocalStorage.themeはセットされていない。
-  // if (localStorage.theme === ColorTheme.dark) {
-  //   return ColorTheme.dark;
-  // } else {
-  //   return ColorTheme.light;
-  // }
+export const getIsDark = () => {
+  if (typeof localStorage === 'undefined' || typeof localStorage.theme === 'undefined'){
+    return false
+  }
+  if (localStorage.theme === ColorTheme.dark) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /**

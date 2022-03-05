@@ -7,9 +7,7 @@ const logoSize = '20px';
 
 const Footer = () => {
   const context = useContext(themeContext);
-  // const [theme, setTheme] = useState(context);
   const themeDir = context.dark ? 'dark' : 'light';
-  // TODO: fix: ライトモードのときロゴが見えない
   return (
     <footer className='text-center text-gray-400 my-12'>
       <a className='m-4' href='https://github.com/miygw'>

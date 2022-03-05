@@ -4,6 +4,7 @@ import { ColorTheme, switchTheme } from "../lib/colorTheme";
 
 const ColorThemeSwitch = () => {
   const context = useContext(themeContext);
+  console.log(`ColorThemeSwitch: context.isDark = ${context.dark}`)
   const callBack = () => {
     switchTheme();
     context.setIsDark(!context.dark)
