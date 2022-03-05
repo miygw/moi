@@ -1,5 +1,5 @@
 import { createContext, useCallback, useState } from 'react';
-import { getIsDarkFromLocalStorage } from '../lib/theme';
+import { getIsDarkFromLocalStorage, getIsDarkFromUserEnv } from '../lib/theme';
 
 // set context type
 type ThemeContext = {
@@ -21,8 +21,7 @@ export const themeContext = createContext<ThemeContext>(defaultContext);
  */
 export const useTheme = (): ThemeContext => {
   // state名はThemeContext typeのプロパティに合わせる。
-  const initialIsDark = getIsDarkOnInitialize();
-  const [dark, setDark] = useState(initialIsDark);
+  const [dark, setDark] = useState(false);
   // 関数名はThemeContext typeのプロパティに合わせる。
   const setIsDark = useCallback((current: boolean): void => {
     setDark(current);
@@ -31,9 +30,4 @@ export const useTheme = (): ThemeContext => {
     dark,
     setIsDark,
   };
-};
-
-const getIsDarkOnInitialize = () => {
-  if (getIsDarkFromLocalStorage()) return true;
-  return getIsDarkFromLocalStorage();
 };

@@ -43,11 +43,8 @@ export const getIsDarkFromLocalStorage = () => {
  * @returns true => ダークテーマ、false => ライトテーマ
  */
 export const getIsDarkFromUserEnv = () => {
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return true;
-  }
-
-  return false;
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
 };
 
 /**

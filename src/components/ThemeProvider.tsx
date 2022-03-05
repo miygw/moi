@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useContext } from 'react';
 import { useTheme, themeContext } from '../hooks/useTheme';
 
 /**
@@ -6,9 +6,11 @@ import { useTheme, themeContext } from '../hooks/useTheme';
  */
 const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
   const context = useTheme();
+
   return (
     // 子コンポーネントによるコンテクストの更新を可能にするため、.Providerを利用する。
     // これを行わない場合、子コンポーネントはコンテクストの参照しかできない。
+
     <themeContext.Provider value={context}>{children}</themeContext.Provider>
   );
 };
