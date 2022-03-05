@@ -1,8 +1,6 @@
 // TODO: 疲れているときに書いたのでリファクタリング必須
 // Hooks で実現したい。
 
-// true => ダークモード、false => ライトモード と扱う。
-
 /**
  * カラーテーマを表す列挙型
  */
@@ -44,7 +42,7 @@ export const getIsDarkFromLocalStorage = () => {
  */
 export const getIsDarkFromUserEnv = () => {
   if (typeof window === 'undefined') return false;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
 };
 
 /**
