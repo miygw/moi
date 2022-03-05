@@ -1,4 +1,4 @@
-import ColorThemeSwitch from '../components/ColorThemeSwitch';
+import ThemeChangeButton from '../components/parts/ThemeChangeButton';
 
 const Index = () => {
   {
@@ -7,7 +7,7 @@ const Index = () => {
   return (
     <div className=' dark:text-white text-center'>
       <p className='text-8xl p-14'>Here is main block</p>
-      <ColorThemeSwitch />
+      <ThemeChangeButton />
     </div>
   );
 };
