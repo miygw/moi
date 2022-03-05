@@ -1,13 +1,14 @@
 import { PropsWithChildren } from 'react';
-import { useDark, themeContext } from '../hooks/useTheme';
+import { useTheme, themeContext } from '../hooks/useTheme';
 
 /**
  * カラーテーマ（Dark/Light）コンテクストを子コンポーネントへ配信するコンポーネント
  */
 const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
-  const context = useDark();
+  const context = useTheme();
   return (
-    // 子コンポーネントによるコンテクストの更新を可能にするため、.Providerを利用する
+    // 子コンポーネントによるコンテクストの更新を可能にするため、.Providerを利用する。
+    // これを行わない場合、子コンポーネントはコンテクストの参照しかできない。
     <themeContext.Provider value={context}>
       {children}
     </themeContext.Provider>
