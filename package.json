@@ -10,6 +10,7 @@
     "format": "prettier --write ./src/**/*.{js,jsx,ts,tsx,json}"
   },
   "dependencies": {
+    "@octokit/rest": "^18.12.0",
     "eslint-config-prettier": "^8.4.0",
     "next": "12.1.0",
     "prettier": "^2.5.1",
