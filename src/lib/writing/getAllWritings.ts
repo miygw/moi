@@ -5,6 +5,11 @@ import html from 'remark-html';
 import { fetchRepoData } from '../github/api';
 import { typeResolve } from '../ts/type';
 
+type GitHubResponseDataWithPath = {
+  path: string,
+  data: GitHubResponseData
+};
+
 type GitHubResponseData = {
   name: string;
   path: string;
@@ -25,11 +30,12 @@ type GitHubResponseData = {
 };
 
 export type WritingInfo = {
-  metaData: Metadata;
+  metaData: MetaData;
   contentHtml: string;
 };
 
-type Metadata = {
+export type MetaData = {
+  path: string;
   title: string;
   date: string;
   summary: string;
@@ -41,38 +47,56 @@ type Metadata = {
  * writing のすべての記事情報を取得する。
  */
 export const getAllWritings = async () => {
-  const rawDirDataAll = await fetchRepoData('miygw', 'writing', 'writing');
-  const dirDataAll = typeResolve<GitHubResponseData[]>(rawDirDataAll);
-  // writing直下のファイルは除外し、ディレクトリ情報だけにする。
-  const writingDirDataAll = dirDataAll.filter((data) => data.type === 'dir');
-
+  const writingDirDataAll = await getAllWritingData();
   const writingDataAll = await Promise.all(
-    writingDirDataAll.map((dirData) => getWriting(dirData.path))
+    writingDirDataAll.map((dirData) => getMarkdown(dirData))
   );
 
   const grayMatterFiles = await Promise.all(
     writingDataAll.map((writingData) => {
-      const content = typeResolve<string>(writingData.content);
+      const content = typeResolve<string>(writingData.data.content);
       // TODO: 以下の encoding を Buffer.from の encoding として使いたいが、BufferEncoding が export されていないのでできない。
       // const encoding = typeResolve<string>(writingData.encoding);
       const buffer = Buffer.from(content, 'base64');
-      return matter(buffer);
+      return {buffer: matter(buffer), path: writingData.path};
     })
   );
 
   const results = await Promise.all(
-    grayMatterFiles.map((file) => createResult(file))
+    grayMatterFiles.map((file) => createResult(file.path, file.buffer))
   );
 
   return results;
 };
 
-const getWriting = async (writingDirPath: string) => {
+/**
+ * writing のすべてのパス情報を取得する。
+ */
+export const getAllWritingPaths = async () => {
+  const writingDirDataAll = await getAllWritingData();
+  return writingDirDataAll.map((dirData) => dirData.name);
+};
+
+/**
+ * すべての記事ディレクトリのデータを取得する。
+ */
+const getAllWritingData = async () => {
+  const rawDirDataAll = await fetchRepoData('miygw', 'writing', 'writing');
+  const dirDataAll = typeResolve<GitHubResponseData[]>(rawDirDataAll);
+  // writing直下のファイルは除外し、ディレクトリ情報だけにする。
+  return dirDataAll.filter((data) => data.type === 'dir');
+};
+
+/**
+ * マークダウンをフェッチする。
+ */
+const getMarkdown = async (dirData: GitHubResponseData) => {
+  const writingDirPath = dirData.path;
   const filePath = path.posix.join(writingDirPath, 'writing.md');
   const rawFileData = await fetchRepoData('miygw', 'writing', filePath);
   const fileData = typeResolve<GitHubResponseData>(rawFileData);
-
-  return fileData;
+  const result: GitHubResponseDataWithPath = {path: dirData.name, data: fileData}
+  return result;
 };
 
 const markdownToHtml = async (markdown: string) => {
@@ -80,12 +104,13 @@ const markdownToHtml = async (markdown: string) => {
   return result.toString();
 };
 
-const createResult = async (file: GrayMatterFile<Buffer>) => {
+const createResult = async (path: string, file: GrayMatterFile<Buffer>) => {
   // TODO: markdownは必ずしもhtmlに変換する必要はない。無駄な処理となる場合がある。
   const contentHtml = await markdownToHtml(file.content);
   const result: WritingInfo = {
     contentHtml: contentHtml,
     metaData: {
+      path,
       title: file.data.title,
       date: file.data.date,
       summary: file.data.summary,
