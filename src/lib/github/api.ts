@@ -8,7 +8,7 @@ const octoKit = new Octokit({
 /**
  * GitHub から 指定されたリポジトリのディレクトリのファイル情報の一覧を取得する。
  */
-export const getFileMetaInfos = async (
+export const fetchRepoData = async (
   owner: string,
   repo: string,
   dirPath: string
