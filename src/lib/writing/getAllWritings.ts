@@ -41,7 +41,7 @@ export type MetaData = {
   summary: string;
 };
 
-// TODO: 以下、疲れているときに書いたのでリファクター必須。リテラルの多さがやばい。
+// TODO: 以下、疲れているときに書いたのでリファクター必須。突貫工事で作ったので処理の見通しが悪く、またリテラルの多さがやばい。
 
 /**
  * writing のすべての記事情報を取得する。
@@ -52,7 +52,7 @@ export const getAllWritings = async () => {
     writingDirDataAll.map((dirData) => getMarkdown(dirData))
   );
 
-  const grayMatterFiles = await Promise.all(
+  const grayMatterFileAndPathSets = await Promise.all(
     writingDataAll.map((writingData) => {
       const content = typeResolve<string>(writingData.data.content);
       // TODO: 以下の encoding を Buffer.from の encoding として使いたいが、BufferEncoding が export されていないのでできない。
@@ -63,7 +63,7 @@ export const getAllWritings = async () => {
   );
 
   const results = await Promise.all(
-    grayMatterFiles.map((file) => createResult(file.path, file.buffer))
+    grayMatterFileAndPathSets.map((fileAndPath) => createResult(fileAndPath.path, fileAndPath.buffer))
   );
 
   return results;
@@ -76,6 +76,20 @@ export const getAllWritingPaths = async () => {
   const writingDirDataAll = await getAllWritingData();
   return writingDirDataAll.map((dirData) => dirData.name);
 };
+
+/**
+ * 指定した writing データを取得する。
+ */
+export const getWriting = async (dirName: string) => {
+  const filePath = path.posix.join('writing', dirName, 'writing.md');
+  const rawWritingData = await fetchRepoData('miygw', 'writing', filePath);
+  const writingData = typeResolve<GitHubResponseData>(rawWritingData);
+  const content = typeResolve<string>(writingData.content)
+  const buffer = Buffer.from(content, 'base64')
+  const grayMatterFile = await matter(buffer);
+
+  return createResult(dirName, grayMatterFile);
+}
 
 /**
  * すべての記事ディレクトリのデータを取得する。
