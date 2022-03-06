@@ -5,7 +5,7 @@ import {
   GetStaticPropsResult,
 } from 'next';
 import { typeResolve } from '../../lib/ts/type';
-import { getAllWritingPaths, getWriting, WritingInfo } from '../../lib/writing/getAllWritings';
+import { getAllPaths, getWritingInfo, WritingInfo } from '../../lib/writing/getWriting';
 import { SlugParams } from '../../types/pages';
 
 const Writing = ({ contentHtml, metaData }: WritingInfo) => {
@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps<WritingInfo, SlugParams> = async (
   context
 ) => {
   const slugParams = typeResolve<SlugParams>(context.params);
-  const writingInfo = await getWriting(slugParams.slug);
+  const writingInfo = await getWritingInfo(slugParams.slug);
   const result: GetStaticPropsResult<WritingInfo> = {
     props: writingInfo,
   };
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<WritingInfo, SlugParams> = async (
 };
 
 export const getStaticPaths: GetStaticPaths<SlugParams> = async () => {
-  const paths = await getAllWritingPaths();
+  const paths = await getAllPaths();
   const allParams = paths.map((path) => {
     const params: { params: SlugParams } = {
       params: { slug: path },

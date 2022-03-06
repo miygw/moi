@@ -3,9 +3,9 @@ import { GetStaticProps, GetStaticPropsResult } from 'next';
 import Meta from '../../components/Meta';
 import WritingSummary from '../../components/writing/WritingSummary';
 import {
-  getAllWritings,
+  getWritingInfos,
   MetaData as MetaData,
-} from '../../lib/writing/getAllWritings';
+} from '../../lib/writing/getWriting';
 import { MoiPages } from '../../moi';
 
 type Props = {
@@ -45,7 +45,7 @@ const sortMetaDataArrayByDateDesc = (metaDataArray: MetaData[]) => {
  * すべての記事のメタデータを Props にして返却する。
  */
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const writingInfos = await getAllWritings();
+  const writingInfos = await getWritingInfos();
   const metaDataArray = writingInfos.map(({ metaData }) => metaData);
   const result: GetStaticPropsResult<Props> = {
     props: { metaDataArray },

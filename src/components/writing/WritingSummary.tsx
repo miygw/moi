@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { MetaData } from '../../lib/writing/getAllWritings';
+import { MetaData } from '../../lib/writing/getWriting';
 
 type Props = {
   metaData: MetaData;
@@ -8,7 +8,7 @@ type Props = {
 const WritingSummary = ({ metaData }: Props) => {
   return (
     <div>
-      <Link href={`/writing/${metaData.path}`}>
+      <Link href={`/writing/${metaData.dirName}`}>
         <a>
           <h2>{metaData.title}</h2>
         </a>
