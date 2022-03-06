@@ -15,8 +15,10 @@ export const getIsDark = () => {
     typeof localStorage === 'undefined' ||
     typeof localStorage.theme === 'undefined'
   ) {
-    console.log('ローカルストレージにカラーテーマ指定がないため、ユーザー環境のカラーテーマ指定を適用する。')
-    return getIsDarkFromUserPref()
+    console.log(
+      'ローカルストレージにカラーテーマ指定がないため、ユーザー環境のカラーテーマ指定を適用する。'
+    );
+    return getIsDarkFromUserPref();
   }
 
   if (getIsDarkFromLocalStorage()) {
@@ -26,7 +28,7 @@ export const getIsDark = () => {
     return true;
   }
 
-  console.log('ダークテーマ指定がなかった。')
+  console.log('ダークテーマ指定がなかった。');
   return false;
 };
 

@@ -11,10 +11,10 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
     if (isMatchTheme(isDarkOnContext)) return;
     context.setIsDark(isDarkOnContext);
     applyIsDark(isDarkOnContext);
-  }
+  };
 
   return (
-    <div className='block mx-auto max-w-7xl justify-center' onLoad={applyTheme}>    
+    <div className='block mx-auto max-w-7xl justify-center' onLoad={applyTheme}>
       <Header />
       {children}
       <Footer />

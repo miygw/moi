@@ -1,7 +1,7 @@
 /**
  * target を T 型インスタンスとして解決する。失敗した場合は TypeError をスローする。
  */
- export const typeResolve = <T>(target: any): T => {
+export const typeResolve = <T>(target: any): T => {
   typeGuard<T>(target);
   return <T>target;
 };
