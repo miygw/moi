@@ -5,16 +5,18 @@ import {
   GetStaticPropsResult,
 } from 'next';
 import { typeResolve } from '../../lib/ts/type';
-import { getAllPaths, getWritingInfo, WritingInfo } from '../../lib/writing/getWriting';
+import {
+  getAllPaths,
+  getWritingInfo,
+  WritingInfo,
+} from '../../lib/writing/getWriting';
 import { SlugParams } from '../../types/pages';
 
 const Writing = ({ contentHtml, metaData }: WritingInfo) => {
   return (
-    <div>
-      <div>
-        <h1>{metaData.title}</h1>
-        <div className='md' dangerouslySetInnerHTML={{ __html: contentHtml }} />
-      </div>
+    <div className='mx-40 dark:text-white'>
+      <h1>{metaData.title}</h1>
+      <div className='md' dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </div>
   );
 };
