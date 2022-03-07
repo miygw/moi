@@ -66,8 +66,10 @@ const BASEDIR_NAME = 'writing';
  */
 export const getWritingInfo = async (dirName: string) => {
   const filePath = path.posix.join(REPO_NAME, dirName, FILE_NAME);
-    // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
-  const fileData = typeResolve<GitHubResponseData>(await getRepoData(OWNER_NAME, REPO_NAME, filePath));
+  // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
+  const fileData = typeResolve<GitHubResponseData>(
+    await getRepoData(OWNER_NAME, REPO_NAME, filePath)
+  );
   const rawWritingInfo: RawWritingInfo = { dirName, fileData };
   return createResult(rawWritingInfo);
 };
@@ -142,7 +144,9 @@ const getRawWritingInfos = async (dirData: GitHubResponseData) => {
   const dirPath = dirData.path;
   const filePath = path.posix.join(dirPath, FILE_NAME);
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
-  const fileData = typeResolve<GitHubResponseData>(await getRepoData(OWNER_NAME, REPO_NAME, filePath));
+  const fileData = typeResolve<GitHubResponseData>(
+    await getRepoData(OWNER_NAME, REPO_NAME, filePath)
+  );
   const result: RawWritingInfo = { dirName: dirData.name, fileData };
   return result;
 };
