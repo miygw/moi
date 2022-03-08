@@ -19,7 +19,7 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
   return (
     <div className='block mx-auto max-w-7xl justify-center' onLoad={applyTheme}>
       <Header />
-      {children}
+      <main className='dark:text-white'>{children}</main>
       <Footer />
     </div>
   );
