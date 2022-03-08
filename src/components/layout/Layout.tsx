@@ -1,16 +1,19 @@
 import { PropsWithChildren, useContext } from 'react';
-import { themeContext } from '../../hooks/useTheme';
+import { ThemeContext } from '../../hooks/useTheme';
 import { applyIsDark, isMatchTheme } from '../../lib/theme';
 import Footer from './Footer';
 import Header from './header/Header';
 
+/**
+ * サイト全体の基本レイアウトを生成するコンポーネント
+ */
 const Layout = ({ children }: PropsWithChildren<{}>) => {
-  const context = useContext(themeContext);
+  const themeContext = useContext(ThemeContext);
   const applyTheme = () => {
-    const isDarkOnContext = context.isDark;
-    if (isMatchTheme(isDarkOnContext)) return;
-    context.setIsDark(isDarkOnContext);
-    applyIsDark(isDarkOnContext);
+    const isDark = themeContext.isDark;
+    if (isMatchTheme(isDark)) return;
+    themeContext.setIsDark(isDark);
+    applyIsDark(isDark);
   };
 
   return (

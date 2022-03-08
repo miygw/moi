@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import path from 'path';
 import { useContext } from 'react';
-import { themeContext } from '../../hooks/useTheme';
+import { ThemeContext } from '../../hooks/useTheme';
 
 const logoSize = '20px';
 
 const Footer = () => {
-  const context = useContext(themeContext);
+  const context = useContext(ThemeContext);
   const themeDir = context.isDark ? 'dark' : 'light';
   return (
     <footer className='text-center text-gray-400 my-12'>

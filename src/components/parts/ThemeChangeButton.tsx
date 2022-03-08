@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { themeContext } from '../../hooks/useTheme';
+import { ThemeContext } from '../../hooks/useTheme';
 import { applyIsDark } from '../../lib/theme';
 
 const ThemeChangeButton = () => {
-  const context = useContext(themeContext);
+  const context = useContext(ThemeContext);
   const themeChange = () => {
     let nextTheme = !context.isDark;
     applyIsDark(nextTheme);

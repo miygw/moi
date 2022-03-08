@@ -21,13 +21,15 @@ const Meta = ({ moiPage }: Props) => {
 };
 
 /**
- * 指定されたページ名に対応するページ情報を取得する。
+ * 与えられたページ名に対応するページ情報を取得する。
  */
 const getPageInfo = (moiPage: MoiPages) => {
   const pageInfoOrUndefined = moi.pages.find(
     (pageInfo) => pageInfo.page === moiPage
   );
-  return typeResolve<PageInfo>(pageInfoOrUndefined);
+  const pageInfo = typeResolve<PageInfo>(pageInfoOrUndefined);
+
+  return pageInfo;
 };
 
 export default Meta;
