@@ -17,12 +17,9 @@ const WritingIndex = ({ metaDataArray }: Props) => {
   return (
     <>
       <Meta moiPage={MoiPages.writing} />
-      <div className='dark:text-white'>
-        {' '}
-        {metaDataArraySorted.map((metaData) => (
-          <WritingSummary key={metaData.title} metaData={metaData} />
-        ))}
-      </div>
+      {metaDataArraySorted.map((metaData) => (
+        <WritingSummary key={metaData.title} metaData={metaData} />
+      ))}
     </>
   );
 };

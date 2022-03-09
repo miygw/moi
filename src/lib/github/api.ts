@@ -43,5 +43,7 @@ export const getRepoData = async (
     path: dirPath,
   });
 
+  console.debug('Done GitHub API communication.');
+
   return typeResolve<GitHubResponseData[]>(response.data);
 };

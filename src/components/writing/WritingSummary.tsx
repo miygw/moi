@@ -7,14 +7,14 @@ type Props = {
 
 const WritingSummary = ({ metaData }: Props) => {
   return (
-    <div>
+    <div className='mb-10'>
       <Link href={`/writing/${metaData.dirName}`}>
         <a>
-          <h2>{metaData.title}</h2>
+          <div className='text-3xl dark:text-white'>{metaData.title}</div>
+          <div className='text-lg'>{metaData.summary}</div>
+          <div>{metaData.date}</div>
         </a>
       </Link>
-      <div>{metaData.summary}</div>
-      <div>{metaData.date}</div>
     </div>
   );
 };
