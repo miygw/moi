@@ -14,7 +14,7 @@ import { SlugParams } from '../../types/pages';
 
 const Writing = ({ contentHtml, metaData }: WritingInfo) => {
   return (
-    <div className='mx-40 dark:text-white'>
+    <div className='dark:text-white'>
       <h1>{metaData.title}</h1>
       <div className='md' dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </div>
