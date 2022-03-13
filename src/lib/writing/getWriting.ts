@@ -2,7 +2,7 @@ import matter, { GrayMatterFile } from 'gray-matter';
 import path from 'path';
 import { remark } from 'remark';
 import html from 'remark-html';
-import gfm from 'remark-gfm'
+import gfm from 'remark-gfm';
 import { getRepoData, GitHubResponseData } from '../github/api';
 import { typeResolve } from '../ts/type';
 
@@ -66,7 +66,7 @@ const DIR_PATH = path.posix.join('assets', 'writing');
  * 与えられたディレクトリに属する記事情報を取得する。
  */
 export const getWritingInfo = async (postDirName: string) => {
-  const filePath = path.posix.join(DIR_PATH ,postDirName, FILE_NAME);
+  const filePath = path.posix.join(DIR_PATH, postDirName, FILE_NAME);
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
   const fileData = typeResolve<GitHubResponseData>(
     await getRepoData(OWNER_NAME, REPO_NAME, filePath)
