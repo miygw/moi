@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <>
       <Meta moiPage={MoiPages.index} />
-      <p className='text-center text-8xl p-14 dark:text-white'>
+      <p className='text-center text-8xl p-14 text-black dark:text-white'>
         Here is main block
       </p>
       <div className='text-center'>
