@@ -2,6 +2,7 @@ import matter, { GrayMatterFile } from 'gray-matter';
 import path from 'path';
 import { remark } from 'remark';
 import html from 'remark-html';
+import gfm from 'remark-gfm'
 import { getRepoData, GitHubResponseData } from '../github/api';
 import { typeResolve } from '../ts/type';
 
@@ -123,7 +124,7 @@ const createResult = async ({ dirName, fileData }: RawWritingInfo) => {
  * Markdown 文字列を HTML 文字列に変換する。
  */
 const markdownToHtml = async (markdown: string) => {
-  const result = await remark().use(html).process(markdown);
+  const result = await remark().use(gfm).use(html).process(markdown);
   return result.toString();
 };
 
