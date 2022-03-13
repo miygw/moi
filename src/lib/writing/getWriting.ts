@@ -2,6 +2,7 @@ import matter, { GrayMatterFile } from 'gray-matter';
 import path from 'path';
 import { remark } from 'remark';
 import html from 'remark-html';
+import gfm from 'remark-gfm'
 import { getRepoData, GitHubResponseData } from '../github/api';
 import { typeResolve } from '../ts/type';
 
@@ -58,19 +59,19 @@ type RawWritingInfo = {
 // TODO: リテラルはすべてmoi.tsに退避させる
 const OWNER_NAME = 'miygw';
 const FILE_NAME = 'writing.md';
-const REPO_NAME = 'writing';
-const BASEDIR_NAME = 'writing';
+const REPO_NAME = 'moi-assets';
+const DIR_PATH = path.posix.join('assets', 'writing');
 
 /**
  * 与えられたディレクトリに属する記事情報を取得する。
  */
-export const getWritingInfo = async (dirName: string) => {
-  const filePath = path.posix.join(REPO_NAME, dirName, FILE_NAME);
+export const getWritingInfo = async (postDirName: string) => {
+  const filePath = path.posix.join(DIR_PATH ,postDirName, FILE_NAME);
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
   const fileData = typeResolve<GitHubResponseData>(
     await getRepoData(OWNER_NAME, REPO_NAME, filePath)
   );
-  const rawWritingInfo: RawWritingInfo = { dirName, fileData };
+  const rawWritingInfo: RawWritingInfo = { dirName: postDirName, fileData };
   return createResult(rawWritingInfo);
 };
 
@@ -123,7 +124,7 @@ const createResult = async ({ dirName, fileData }: RawWritingInfo) => {
  * Markdown 文字列を HTML 文字列に変換する。
  */
 const markdownToHtml = async (markdown: string) => {
-  const result = await remark().use(html).process(markdown);
+  const result = await remark().use(gfm).use(html).process(markdown);
   return result.toString();
 };
 
@@ -131,7 +132,7 @@ const markdownToHtml = async (markdown: string) => {
  * すべての記事ディレクトリのデータを取得する。
  */
 const getAllDirectoryData = async () => {
-  const dirDataAll = await getRepoData(OWNER_NAME, REPO_NAME, BASEDIR_NAME);
+  const dirDataAll = await getRepoData(OWNER_NAME, REPO_NAME, DIR_PATH);
   // writing直下のファイルは除外し、ディレクトリ情報だけにする。
   return dirDataAll.filter((data) => data.type === 'dir');
 };

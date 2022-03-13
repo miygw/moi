@@ -4,6 +4,8 @@ import {
   GetStaticProps,
   GetStaticPropsResult,
 } from 'next';
+import MetaDataBlock from '../../components/writing/MetaDataBlock';
+import View from '../../components/writing/View';
 import { typeResolve } from '../../lib/ts/type';
 import {
   getAllPaths,
@@ -13,11 +15,12 @@ import {
 import { SlugParams } from '../../types/pages';
 
 const Writing = ({ contentHtml, metaData }: WritingInfo) => {
+  // TODO: 上部に戻る、下部に次の記事・前の記事
   return (
-    <div className='dark:text-white'>
-      <h1>{metaData.title}</h1>
-      <div className='md' dangerouslySetInnerHTML={{ __html: contentHtml }} />
-    </div>
+    <>
+      <View contentHtml={contentHtml} metaData={metaData} />
+      <MetaDataBlock metaData={metaData} />
+    </>
   );
 };
 
