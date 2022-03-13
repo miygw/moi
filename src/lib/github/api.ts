@@ -37,6 +37,7 @@ export const getRepoData = async (
   repo: string,
   dirPath: string
 ) => {
+  console.debug(`dirPath:${dirPath}`);
   const response = await octoKit.rest.repos.getContent({
     owner,
     repo,
