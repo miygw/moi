@@ -6,6 +6,10 @@ export const defaultSeoProps: DefaultSeoProps = {
   defaultTitle: 'miygw',
   description: 'moi; miygw on internet',
   canonical: 'https://miygw.vercel.app',
+  additionalLinkTags: [{
+    rel: 'icon',
+    href: '/miygw.ico'
+  }],
   openGraph: {
     url: 'https://miygw.vercel.app',
     type: 'website',
