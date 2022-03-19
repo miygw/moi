@@ -1,10 +1,9 @@
-import Meta from '../../components/Meta';
-import { MoiPages } from '../../moi';
+import { NextSeo } from "next-seo";
 
 const Miygw = () => {
   return (
     <>
-      <Meta moiPage={MoiPages.miygw} />
+      <NextSeo title="about"/>
       <div className='dark:text-white'>miygw is coming soon.</div>
     </>
   );
