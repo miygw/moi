@@ -1,7 +1,6 @@
 import { DefaultSeoProps } from "next-seo";
 
 export const defaultSeoProps: DefaultSeoProps = {
-  titleTemplate: 'miygw',
   title: 'miygw',
   defaultTitle: 'miygw',
   description: 'moi; miygw on internet',
