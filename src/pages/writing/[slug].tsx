@@ -19,7 +19,7 @@ const Writing = ({ contentHtml, metaData }: WritingInfo) => {
   // TODO: 上部に戻る、下部に次の記事・前の記事
   return (
     <>
-      <NextSeo title={metaData.title} description={metaData.summary}/>
+      <NextSeo title={metaData.title} description={metaData.summary} />
       <View contentHtml={contentHtml} metaData={metaData} />
       <MetaDataBlock metaData={metaData} />
     </>

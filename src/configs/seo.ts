@@ -1,14 +1,16 @@
-import { DefaultSeoProps } from "next-seo";
+import { DefaultSeoProps } from 'next-seo';
 
 export const defaultSeoProps: DefaultSeoProps = {
   title: 'miygw',
   defaultTitle: 'miygw',
   description: 'moi; miygw on internet',
   canonical: 'https://miygw.vercel.app',
-  additionalLinkTags: [{
-    rel: 'icon',
-    href: '/miygw.ico'
-  }],
+  additionalLinkTags: [
+    {
+      rel: 'icon',
+      href: '/miygw.ico',
+    },
+  ],
   openGraph: {
     url: 'https://miygw.vercel.app',
     type: 'website',
@@ -20,7 +22,7 @@ export const defaultSeoProps: DefaultSeoProps = {
         alt: 'miygw',
         type: 'image/jpg',
       },
-    ],    
+    ],
     locale: 'ja_JP',
     site_name: 'miygw',
   },

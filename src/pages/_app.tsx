@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <GoogleAnalytics/>
+      <GoogleAnalytics />
       <div className='text-gray-500 dark:text-gray-400'>
         <ThemeProvider>
           <Layout>

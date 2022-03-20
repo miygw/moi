@@ -15,7 +15,7 @@ const WritingIndex = ({ metaDataArray }: Props) => {
   const metaDataArraySorted = sortMetaDataArrayByDateDesc(metaDataArray);
   return (
     <>
-      <NextSeo title='writing'/>
+      <NextSeo title='writing' />
       {metaDataArraySorted.map((metaData) => (
         <WritingSummary key={metaData.title} metaData={metaData} />
       ))}

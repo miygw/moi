@@ -10,8 +10,10 @@ const WritingSummary = ({ metaData }: Props) => {
     <div className='mb-10'>
       <Link href={`/writing/${metaData.dirName}`}>
         <a>
-          <div>{metaData.date}</div>          
-          <div className='text-3xl text-black dark:text-white'>{metaData.title}</div>
+          <div>{metaData.date}</div>
+          <div className='text-3xl text-black dark:text-white'>
+            {metaData.title}
+          </div>
           <div className='text-lg'>{metaData.summary}</div>
         </a>
       </Link>
