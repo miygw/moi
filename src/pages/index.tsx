@@ -1,11 +1,10 @@
-import Meta from '../components/Meta';
+import { NextSeo } from 'next-seo';
 import ThemeChangeButton from '../components/parts/ThemeChangeButton';
-import { MoiPages } from '../moi';
 
 const Index = () => {
   return (
     <>
-      <Meta moiPage={MoiPages.index} />
+      <NextSeo description='Main page.' />
       <p className='text-center text-8xl p-14 text-black dark:text-white'>
         Here is main block
       </p>

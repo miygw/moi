@@ -1,12 +1,11 @@
 import { isBefore } from 'date-fns';
 import { GetStaticProps, GetStaticPropsResult } from 'next';
-import Meta from '../../components/Meta';
+import { NextSeo } from 'next-seo';
 import WritingSummary from '../../components/writing/WritingSummary';
 import {
   getWritingInfos,
   MetaData as MetaData,
 } from '../../lib/writing/getWriting';
-import { MoiPages } from '../../moi';
 
 type Props = {
   metaDataArray: MetaData[];
@@ -16,7 +15,7 @@ const WritingIndex = ({ metaDataArray }: Props) => {
   const metaDataArraySorted = sortMetaDataArrayByDateDesc(metaDataArray);
   return (
     <>
-      <Meta moiPage={MoiPages.writing} />
+      <NextSeo title='writing' />
       {metaDataArraySorted.map((metaData) => (
         <WritingSummary key={metaData.title} metaData={metaData} />
       ))}
