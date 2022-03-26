@@ -10,6 +10,6 @@ const Description = () => {
   useEffect(() => setDescriptionState(document.title), [router.pathname]);
 
   return <div className='mx-4 my-auto'>{descriptionState}</div>;
-}
+};
 
 export default Description;
