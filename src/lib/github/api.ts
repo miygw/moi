@@ -23,7 +23,6 @@ export type GitHubResponseData = {
   };
 };
 
-// TODO: アクセストークンはビルド環境（ローカル/vercel）のものを呼び出すようにする
 const octoKit = new Octokit({
   // ローカル環境では GITHUB_TOKEN の値は .env で定義している。
   auth: process.env.GITHUB_TOKEN,
