@@ -19,7 +19,9 @@ const ItemInfos = [
 const GlobalNavigation = () => {
   return (
     // TODO: 横幅は画面サイズに応じて変えないといけないぞ
-    <div className={`fixed left-0 min-h-full w-60 text-black dark:text-white`}>
+    <div
+      className={`pt-4 fixed left-0 min-h-full w-60 text-black dark:text-white`}
+    >
       <ul>
         {ItemInfos.map((info) => (
           <li key={info.text}>
@@ -39,9 +41,13 @@ type ItemProps = {
 
 const Item = ({ href, text }: ItemProps) => {
   return (
-    <Link href={href}>
-      <a>{text}</a>
-    </Link>
+    <div className='pl-6 h-8 hover:bg-sky-200 dark:hover:bg-sky-900'>
+      <Link href={href}>
+        <a className='h-full'>
+          <div className='w-full h-full'>{text}</div>
+        </a>
+      </Link>
+    </div>
   );
 };
 
