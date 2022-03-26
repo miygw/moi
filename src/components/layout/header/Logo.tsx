@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { useContext } from 'react';
 import { GlobalNavigationContext } from '../../provider/GlobalNavigationProvider';
 
@@ -9,7 +8,7 @@ const Logo = () => {
 
   return (
     <a onClick={setIsOpen}>
-      <Image src={'/miygw.jpg'} alt='logo' width={50} height={50} />
+      <Image src={'/miygw.jpg'} alt='logo' width={40} height={40} />
     </a>
   );
 };
