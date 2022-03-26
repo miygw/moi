@@ -1,10 +1,10 @@
-import path from "path";
+import path from 'path';
 
 export const github = {
   api: {
-    ownerName:  'miygw',
+    ownerName: 'miygw',
     fileName: 'writing.md',
     repoName: 'moi-assets',
-    dirPath: path.posix.join('assets', 'writing')
-  }
-}
+    dirPath: path.posix.join('assets', 'writing'),
+  },
+};

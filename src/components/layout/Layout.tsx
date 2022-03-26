@@ -23,7 +23,7 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
       <Header />
       <div className='flex justify-center'>
         <GlobalNavigation />
-        <Overlay/>
+        <Overlay />
         <main className='mx-10 lg:mx-40'>{children}</main>
       </div>
       <Footer />

@@ -61,7 +61,11 @@ type RawWritingInfo = {
  * 与えられたディレクトリに属する記事情報を取得する。
  */
 export const getWritingInfo = async (postDirName: string) => {
-  const filePath = path.posix.join(github.api.dirPath, postDirName, github.api.fileName);
+  const filePath = path.posix.join(
+    github.api.dirPath,
+    postDirName,
+    github.api.fileName
+  );
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
   const fileData = typeResolve<GitHubResponseData>(
     await getRepoData(github.api.ownerName, github.api.repoName, filePath)
@@ -127,7 +131,11 @@ const markdownToHtml = async (markdown: string) => {
  * すべての記事ディレクトリのデータを取得する。
  */
 const getAllDirectoryData = async () => {
-  const dirDataAll = await getRepoData(github.api.ownerName, github.api.repoName, github.api.dirPath);
+  const dirDataAll = await getRepoData(
+    github.api.ownerName,
+    github.api.repoName,
+    github.api.dirPath
+  );
   // writing直下のファイルは除外し、ディレクトリ情報だけにする。
   return dirDataAll.filter((data) => data.type === 'dir');
 };
