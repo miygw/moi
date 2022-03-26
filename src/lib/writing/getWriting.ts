@@ -1,10 +1,11 @@
-import matter, { GrayMatterFile } from 'gray-matter';
 import path from 'path';
 import { remark } from 'remark';
 import html from 'remark-html';
 import gfm from 'remark-gfm';
 import { getRepoData, GitHubResponseData } from '../github/api';
 import { typeResolve } from '../ts/type';
+import { github } from '../../configs/github';
+import matter from 'gray-matter';
 
 /**
  * 記事の情報を表す型。
@@ -56,20 +57,14 @@ type RawWritingInfo = {
   fileData: GitHubResponseData;
 };
 
-// TODO: リテラルはすべてmoi.tsに退避させる
-const OWNER_NAME = 'miygw';
-const FILE_NAME = 'writing.md';
-const REPO_NAME = 'moi-assets';
-const DIR_PATH = path.posix.join('assets', 'writing');
-
 /**
  * 与えられたディレクトリに属する記事情報を取得する。
  */
 export const getWritingInfo = async (postDirName: string) => {
-  const filePath = path.posix.join(DIR_PATH, postDirName, FILE_NAME);
+  const filePath = path.posix.join(github.api.dirPath, postDirName, github.api.fileName);
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
   const fileData = typeResolve<GitHubResponseData>(
-    await getRepoData(OWNER_NAME, REPO_NAME, filePath)
+    await getRepoData(github.api.ownerName, github.api.repoName, filePath)
   );
   const rawWritingInfo: RawWritingInfo = { dirName: postDirName, fileData };
   return createResult(rawWritingInfo);
@@ -132,7 +127,7 @@ const markdownToHtml = async (markdown: string) => {
  * すべての記事ディレクトリのデータを取得する。
  */
 const getAllDirectoryData = async () => {
-  const dirDataAll = await getRepoData(OWNER_NAME, REPO_NAME, DIR_PATH);
+  const dirDataAll = await getRepoData(github.api.ownerName, github.api.repoName, github.api.dirPath);
   // writing直下のファイルは除外し、ディレクトリ情報だけにする。
   return dirDataAll.filter((data) => data.type === 'dir');
 };
@@ -143,10 +138,10 @@ const getAllDirectoryData = async () => {
  */
 const getRawWritingInfos = async (dirData: GitHubResponseData) => {
   const dirPath = dirData.path;
-  const filePath = path.posix.join(dirPath, FILE_NAME);
+  const filePath = path.posix.join(dirPath, github.api.fileName);
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
   const fileData = typeResolve<GitHubResponseData>(
-    await getRepoData(OWNER_NAME, REPO_NAME, filePath)
+    await getRepoData(github.api.ownerName, github.api.repoName, filePath)
   );
   const result: RawWritingInfo = { dirName: dirData.name, fileData };
   return result;
