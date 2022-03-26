@@ -11,13 +11,16 @@ type ItemProps = {
 };
 
 const LinkItem = ({ href, text }: ItemProps) => {
+  // このメニュー項目が現在URLに対応するなら、メニュー項目の表示を強調する。そのための準備。
   const [isSelectedState, setIsSelectedState] = useState(false);
   const router = useRouter();
   useEffect(() => {
+    // 現在パスの親パスがメニュー項目URLと一致すれば、強調する。
     const isSelected = isChildrenOrMatchPathName(href, router.pathname);
     return setIsSelectedState(isSelected);
   }, [href, router.pathname]);
 
+  // メニュー項目クリックでメニューを閉じる関数の定義
   const ctx = useContext(GlobalNavigationContext);
   const closeGlobalNavigation = () => ctx.setIsOpen(false);
 
