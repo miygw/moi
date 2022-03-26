@@ -1,13 +1,15 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { useContext } from 'react';
+import { GlobalNavigationContext } from '../../provider/GlobalNavigationProvider';
 
 const Logo = () => {
+  const ctx = useContext(GlobalNavigationContext);
+  const setIsOpen = () => ctx.setIsOpen(!ctx.isOpen);
+
   return (
-    <Link href='/'>
-      <a>
-        <Image src={'/miygw.jpg'} alt='logo' width={50} height={50} />
-      </a>
-    </Link>
+    <a onClick={setIsOpen}>
+      <Image src={'/miygw.jpg'} alt='logo' width={40} height={40} />
+    </a>
   );
 };
 

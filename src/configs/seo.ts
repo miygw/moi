@@ -1,8 +1,8 @@
 import { DefaultSeoProps } from 'next-seo';
 
 export const defaultSeoProps: DefaultSeoProps = {
-  title: 'miygw',
-  defaultTitle: 'miygw',
+  title: 'moi',
+  defaultTitle: 'moi',
   description: 'moi; miygw on internet',
   canonical: 'https://miygw.vercel.app',
   additionalLinkTags: [

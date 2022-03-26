@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import * as gtag from '../lib/gtag';
 import GoogleAnalytics from '../components/GoogleAnalytics';
+import GlobalNavigationProvider from '../components/provider/GlobalNavigationProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -26,10 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GoogleAnalytics />
       <div className='text-gray-500 dark:text-gray-400'>
         <ThemeProvider>
-          <Layout>
-            <DefaultSeo {...defaultSeoProps} />
-            <Component {...pageProps} />
-          </Layout>
+          <GlobalNavigationProvider>
+            <Layout>
+              <DefaultSeo {...defaultSeoProps} />
+              <Component {...pageProps} />
+            </Layout>
+          </GlobalNavigationProvider>
         </ThemeProvider>
       </div>
     </>
