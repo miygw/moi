@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ThemeChangeButton from '../../parts/ThemeChangeButton';
 
 // TODO: お前はconfigs行き
 const ItemInfos = [
@@ -16,6 +17,8 @@ const ItemInfos = [
   },
 ];
 
+const DefaultPaddingLeft = 'pl-6';
+
 const GlobalNavigation = () => {
   return (
     // TODO: 横幅は画面サイズに応じて変えないといけないぞ
@@ -29,6 +32,9 @@ const GlobalNavigation = () => {
           </li>
         ))}
       </ul>
+      <div className={`${DefaultPaddingLeft} pl-6 pt-8`}>
+        <ThemeChangeButton />
+      </div>
     </div>
   );
 };
@@ -41,7 +47,9 @@ type ItemProps = {
 
 const Item = ({ href, text }: ItemProps) => {
   return (
-    <div className='pl-6 h-8 hover:bg-sky-200 dark:hover:bg-sky-900'>
+    <div
+      className={`${DefaultPaddingLeft} h-8 hover:bg-sky-200 dark:hover:bg-sky-900`}
+    >
       <Link href={href}>
         <a className='h-full'>
           <div className='w-full h-full'>{text}</div>
