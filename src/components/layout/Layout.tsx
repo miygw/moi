@@ -1,6 +1,6 @@
 import { PropsWithChildren, useContext } from 'react';
-import { ThemeContext } from '../../hooks/useTheme';
 import { applyIsDark, isMatchTheme } from '../../lib/theme';
+import { ThemeContext } from '../provider/ThemeProvider';
 import Footer from './Footer';
 import Header from './header/Header';
 

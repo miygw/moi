@@ -1,14 +1,33 @@
 import { PropsWithChildren } from 'react';
-import { useThemeContext, ThemeContext } from '../../hooks/useTheme';
+import { createContext, useCallback, useState } from 'react';
+import { getIsDark } from '../../lib/theme';
 
-/**
- * カラーテーマ（Dark/Light）コンテクストを子コンポーネントへ配信するコンポーネント
- */
+const defaultIsDark = getIsDark();
+
+type ThemeContext = {
+  isDark: boolean;
+  setIsDark: (isDark: boolean) => void;
+};
+
+export const ThemeContext = createContext<ThemeContext>({
+  isDark: defaultIsDark,
+  setIsDark: () => {},
+});
+
+export const useThemeContext = (): ThemeContext => {
+  const [isDark, setIsDarkState] = useState(defaultIsDark);
+  const setIsDark = useCallback((currentIsDark: boolean): void => {
+    setIsDarkState(currentIsDark);
+  }, []);
+  return {
+    isDark,
+    setIsDark,
+  };
+};
+
 const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
   const context = useThemeContext();
 
-  // 子コンポーネントによるコンテクストの更新を可能にするため、.Providerを利用する。
-  // これを行わない場合、子コンポーネントはコンテクストの参照しかできない。
   return (
     <ThemeContext.Provider value={context}>{children}</ThemeContext.Provider>
   );

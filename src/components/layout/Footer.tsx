@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import path from 'path';
 import { useContext } from 'react';
-import { ThemeContext } from '../../hooks/useTheme';
+import { ThemeContext } from '../provider/ThemeProvider';
 
 const logoSize = '20px';
 
