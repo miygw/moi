@@ -3,6 +3,7 @@ import { applyIsDark, isMatchTheme } from '../../lib/theme';
 import { ThemeContext } from '../provider/ThemeProvider';
 import Footer from './Footer';
 import Header from './header/Header';
+import Overlay from './Overlay';
 import GlobalNavigation from './sidebar/GlobalNavigation';
 
 /**
@@ -22,6 +23,7 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
       <Header />
       <div className='flex justify-center'>
         <GlobalNavigation />
+        <Overlay/>
         <main className='mx-10 lg:mx-40'>{children}</main>
       </div>
       <Footer />
