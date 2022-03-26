@@ -1,7 +1,8 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { GlobalNavigationPaddingLeft } from "./GlobalNavigation";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
+import { GlobalNavigationContext } from '../../provider/GlobalNavigationProvider';
+import { GlobalNavigationPaddingLeft } from './GlobalNavigation';
 
 // TODO: お前は別ファイル行き
 type ItemProps = {
@@ -17,6 +18,9 @@ const LinkItem = ({ href, text }: ItemProps) => {
     return setIsSelectedState(isSelected);
   }, [href, router.pathname]);
 
+  const ctx = useContext(GlobalNavigationContext);
+  const closeGlobalNavigation = () => ctx.setIsOpen(false);
+
   const dynamicDesign = isSelectedState ? `bg-gray-200 dark:bg-zinc-800` : ``;
 
   return (
@@ -24,7 +28,7 @@ const LinkItem = ({ href, text }: ItemProps) => {
       className={`${GlobalNavigationPaddingLeft} ${dynamicDesign} h-8 hover:bg-sky-200 dark:hover:bg-sky-900`}
     >
       <Link href={href}>
-        <a className='h-full'>
+        <a className='h-full' onClick={closeGlobalNavigation}>
           <div className='w-full h-full'>{text}</div>
         </a>
       </Link>
