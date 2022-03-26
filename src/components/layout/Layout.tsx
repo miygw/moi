@@ -3,6 +3,7 @@ import { applyIsDark, isMatchTheme } from '../../lib/theme';
 import { ThemeContext } from '../provider/ThemeProvider';
 import Footer from './Footer';
 import Header from './header/Header';
+import GlobalNavigation from './sidebar/GlobalNavigation';
 
 /**
  * サイト全体の基本レイアウトを生成するコンポーネント
@@ -17,9 +18,12 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
   };
 
   return (
-    <div className='block mx-auto justify-center' onLoad={applyTheme}>
+    <div className='mx-auto' onLoad={applyTheme}>
       <Header />
-      <main className='mx-10 lg:mx-40'>{children}</main>
+      <div className='flex justify-center'>
+        <GlobalNavigation />
+        <main className='mx-10 lg:mx-40'>{children}</main>
+      </div>
       <Footer />
     </div>
   );
