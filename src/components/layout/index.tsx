@@ -6,7 +6,7 @@ import Header from './header';
 import Overlay from './Overlay';
 import GlobalNavigation from './sidebar';
 
-export default function Layout({ children }: PropsWithChildren<{}>){
+export default function Layout({ children }: PropsWithChildren<{}>) {
   const themeContext = useContext(ThemeContext);
   const applyTheme = () => {
     const isDark = themeContext.isDark;
@@ -16,7 +16,10 @@ export default function Layout({ children }: PropsWithChildren<{}>){
   };
 
   return (
-    <div className='mx-auto text-gray-500 dark:text-gray-400' onLoad={applyTheme}>
+    <div
+      className='mx-auto text-gray-500 dark:text-gray-400'
+      onLoad={applyTheme}
+    >
       <Header />
       <div className='flex justify-center'>
         <GlobalNavigation />
@@ -26,4 +29,4 @@ export default function Layout({ children }: PropsWithChildren<{}>){
       <Footer />
     </div>
   );
-};
+}
