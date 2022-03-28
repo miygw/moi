@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-const DefaultDescription = '?????';
+// 空文字列以外を入れると、初回ロード時に一瞬表示される場合がある
+const DefaultDescription = '';
 
 const Description = () => {
   const [descriptionState, setDescriptionState] = useState(DefaultDescription);
