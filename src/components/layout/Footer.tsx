@@ -5,7 +5,7 @@ import { ThemeContext } from '../provider/ThemeProvider';
 
 const logoSize = '20px';
 
-const Footer = () => {
+export default function Footer() {
   const context = useContext(ThemeContext);
   const themeDir = context.isDark ? 'dark' : 'light';
   return (
@@ -28,6 +28,4 @@ const Footer = () => {
       </a>
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -22,7 +22,7 @@ const ItemInfos = [
 
 export const GlobalNavigationPaddingLeft = 'pl-6';
 
-const GlobalNavigation = () => {
+export default function GlobalNavigation() {
   const ctx = useContext(GlobalNavigationContext);
   const visibility = ctx.isOpen ? `visible` : `invisible`;
 
@@ -42,6 +42,4 @@ const GlobalNavigation = () => {
       </div>
     </div>
   );
-};
-
-export default GlobalNavigation;
+}

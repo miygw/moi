@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { GlobalNavigationContext } from '../../provider/GlobalNavigationProvider';
-import { GlobalNavigationPaddingLeft } from './GlobalNavigation';
+import { GlobalNavigationPaddingLeft } from '.';
 
 /**
  * 「actualPath が parentPath と一致、または parentPath のサブページである」が成り立つかを判断する。

@@ -25,12 +25,10 @@ export const useThemeContext = (): ThemeContext => {
   };
 };
 
-const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
+export default function ThemeProvider({ children }: PropsWithChildren<{}>) {
   const context = useThemeContext();
 
   return (
     <ThemeContext.Provider value={context}>{children}</ThemeContext.Provider>
   );
-};
-
-export default ThemeProvider;
+}

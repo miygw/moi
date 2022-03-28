@@ -11,7 +11,9 @@ export const GlobalNavigationContext = createContext<GlobalNavigationContext>({
   setIsOpen: () => {},
 });
 
-const GlobalNavigationProvider = ({ children }: PropsWithChildren<{}>) => {
+export default function GlobalNavigationProvider({
+  children,
+}: PropsWithChildren<{}>) {
   const [isOpenState, setIsOpenState] = useState(false);
   const setIsOpen = useCallback(
     (isOpen: boolean) => setIsOpenState(isOpen),
@@ -28,6 +30,4 @@ const GlobalNavigationProvider = ({ children }: PropsWithChildren<{}>) => {
       {children}
     </GlobalNavigationContext.Provider>
   );
-};
-
-export default GlobalNavigationProvider;
+}

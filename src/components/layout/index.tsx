@@ -2,9 +2,9 @@ import { PropsWithChildren, useContext } from 'react';
 import { applyIsDark, isMatchTheme } from '../../lib/theme';
 import { ThemeContext } from '../provider/ThemeProvider';
 import Footer from './Footer';
-import Header from './header/Header';
+import Header from './header';
 import Overlay from './Overlay';
-import GlobalNavigation from './sidebar/GlobalNavigation';
+import GlobalNavigation from './sidebar';
 
 export default function Layout({ children }: PropsWithChildren<{}>){
   const themeContext = useContext(ThemeContext);

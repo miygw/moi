@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { applyIsDark } from '../../lib/theme';
 import { ThemeContext } from '../provider/ThemeProvider';
 
-const ThemeChangeButton = () => {
+export default function ThemeChangeButton() {
   const context = useContext(ThemeContext);
   const themeChange = () => {
     let nextTheme = !context.isDark;
@@ -21,6 +21,4 @@ const ThemeChangeButton = () => {
       {`Change Theme`}
     </button>
   );
-};
-
-export default ThemeChangeButton;
+}

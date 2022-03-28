@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { layout } from '../../configs/layout';
 import { GlobalNavigationContext } from '../provider/GlobalNavigationProvider';
 
-const Overlay = () => {
+export default function Overlay() {
   const context = useContext(GlobalNavigationContext);
 
   const isShow = context.isOpen
@@ -15,6 +15,4 @@ const Overlay = () => {
       onClick={() => context.setIsOpen(false)}
     />
   );
-};
-
-export default Overlay;
+}

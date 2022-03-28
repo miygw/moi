@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 // 空文字列以外を入れると、初回ロード時に一瞬表示される場合がある
 const DefaultDescription = '';
 
-const Description = () => {
+export default function Description() {
   const [descriptionState, setDescriptionState] = useState(DefaultDescription);
   const router = useRouter();
   // TODO: useEffectの第２引数をdocument.titleとすると、document is undefinedエラーが出る。
@@ -16,6 +16,4 @@ const Description = () => {
       <div className='text-ellipsis whitespace-nowrap'>{descriptionState}</div>
     </div>
   );
-};
-
-export default Description;
+}
