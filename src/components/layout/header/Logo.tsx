@@ -8,7 +8,7 @@ const Logo = () => {
 
   return (
     <a onClick={setIsOpen}>
-      <Image src={'/miygw.jpg'} alt='logo' width={40} height={40} />
+      <Image src={'/miygw.jpg'} alt='logo' width={50} height={50} />
     </a>
   );
 };
