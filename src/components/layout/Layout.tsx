@@ -19,7 +19,7 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
   };
 
   return (
-    <div className='mx-auto' onLoad={applyTheme}>
+    <div className='mx-auto text-gray-500 dark:text-gray-400' onLoad={applyTheme}>
       <Header />
       <div className='flex justify-center'>
         <GlobalNavigation />

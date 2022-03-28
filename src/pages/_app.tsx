@@ -25,16 +25,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <GoogleAnalytics />
-      <div className='text-gray-500 dark:text-gray-400'>
-        <ThemeProvider>
-          <GlobalNavigationProvider>
-            <Layout>
-              <DefaultSeo {...defaultSeoProps} />
-              <Component {...pageProps} />
-            </Layout>
-          </GlobalNavigationProvider>
-        </ThemeProvider>
-      </div>
+      <ThemeProvider>
+        <GlobalNavigationProvider>
+          <Layout>
+            <DefaultSeo {...defaultSeoProps} />
+            <Component {...pageProps} />
+          </Layout>
+        </GlobalNavigationProvider>
+      </ThemeProvider>
     </>
   );
 }
