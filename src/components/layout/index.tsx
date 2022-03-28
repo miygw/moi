@@ -6,10 +6,7 @@ import Header from './header/Header';
 import Overlay from './Overlay';
 import GlobalNavigation from './sidebar/GlobalNavigation';
 
-/**
- * サイト全体の基本レイアウトを生成するコンポーネント
- */
-const Layout = ({ children }: PropsWithChildren<{}>) => {
+export default function Layout({ children }: PropsWithChildren<{}>){
   const themeContext = useContext(ThemeContext);
   const applyTheme = () => {
     const isDark = themeContext.isDark;
@@ -30,5 +27,3 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
     </div>
   );
 };
-
-export default Layout;

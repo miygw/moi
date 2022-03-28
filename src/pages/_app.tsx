@@ -1,6 +1,5 @@
 import 'tailwindcss/tailwind.css';
 import type { AppProps } from 'next/app';
-import Layout from '../components/layout/Layout';
 import ThemeProvider from '../components/provider/ThemeProvider';
 import { DefaultSeo } from 'next-seo';
 import { defaultSeoProps } from '../configs/seo';
@@ -9,6 +8,7 @@ import { useEffect } from 'react';
 import * as gtag from '../lib/gtag';
 import GoogleAnalytics from '../components/GoogleAnalytics';
 import GlobalNavigationProvider from '../components/provider/GlobalNavigationProvider';
+import Layout from '../components/layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
