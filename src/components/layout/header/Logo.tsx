@@ -7,10 +7,11 @@ const Logo = () => {
   const ctx = useContext(GlobalNavigationContext);
   const setIsOpen = () => ctx.setIsOpen(!ctx.isOpen);
   const isLg = useMediaQuery({query: '(min-width: 1024px)'});
+  const doNothing = () => {};
 
   return (
-    <div onClick={isLg ? () => {} : setIsOpen} className='m-2 min-w-fit'>
-      <Image src={'/miygw.jpg'} alt='logo' width={50} height={50} />
+    <div onClick={isLg ? doNothing : setIsOpen} className={`$lg:m-1 min-w-fit`}>
+      <Image src={'/miygw.jpg'} alt='logo' width={45} height={45} />
     </div>
   );
 };
