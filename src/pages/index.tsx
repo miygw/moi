@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import ThemeChangeButton from '../components/parts/ThemeChangeButton';
 
-const Index = () => {
+export default function Home() {
   return (
     <>
       <NextSeo title='Home' description='Main page.' />
@@ -13,6 +13,4 @@ const Index = () => {
       </div>
     </>
   );
-};
-
-export default Index;
+}

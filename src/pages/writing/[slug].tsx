@@ -15,7 +15,7 @@ import {
 } from '../../lib/writing/getWriting';
 import { SlugParams } from '../../types/pages';
 
-const Writing = ({ contentHtml, metaData }: WritingInfo) => {
+export default function Writing({ contentHtml, metaData }: WritingInfo) {
   // TODO: 上部に戻る、下部に次の記事・前の記事
   return (
     <>
@@ -24,7 +24,7 @@ const Writing = ({ contentHtml, metaData }: WritingInfo) => {
       <MetaDataBlock metaData={metaData} />
     </>
   );
-};
+}
 
 export const getStaticProps: GetStaticProps<WritingInfo, SlugParams> = async (
   context
@@ -55,5 +55,3 @@ export const getStaticPaths: GetStaticPaths<SlugParams> = async () => {
 
   return result;
 };
-
-export default Writing;

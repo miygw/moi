@@ -11,7 +11,7 @@ type Props = {
   metaDataArray: MetaData[];
 };
 
-const WritingIndex = ({ metaDataArray }: Props) => {
+export default function WritingIndex({ metaDataArray }: Props) {
   const metaDataArraySorted = sortMetaDataArrayByDateDesc(metaDataArray);
   return (
     <>
@@ -21,7 +21,7 @@ const WritingIndex = ({ metaDataArray }: Props) => {
       ))}
     </>
   );
-};
+}
 
 /**
  * 結果の一覧を日付降順にソートする。
@@ -49,5 +49,3 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return result;
 };
-
-export default WritingIndex;

@@ -1,12 +1,10 @@
 import { NextSeo } from 'next-seo';
 
-const Miygw = () => {
+export default function Miygw() {
   return (
     <>
       <NextSeo title='miygw' />
       <div className='dark:text-white'>miygw is coming soon.</div>
     </>
   );
-};
-
-export default Miygw;
+}

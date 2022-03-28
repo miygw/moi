@@ -10,7 +10,7 @@ import GoogleAnalytics from '../components/GoogleAnalytics';
 import GlobalNavigationProvider from '../components/provider/GlobalNavigationProvider';
 import Layout from '../components/layout';
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url: string) => {
@@ -36,5 +36,3 @@ function MyApp({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
-export default MyApp;

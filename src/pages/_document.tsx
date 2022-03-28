@@ -1,7 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
 // body 要素全体の背景色をコントロールしたいため定義している。
-const Document = () => {
+export default function Document() {
   return (
     <Html>
       <Head />
@@ -12,6 +12,4 @@ const Document = () => {
       </body>
     </Html>
   );
-};
-
-export default Document;
+}
