@@ -6,6 +6,16 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model think_flow {
+  id              Int      @id @default(autoincrement())
+  text            String
+  note            String?
+  url             String?
+  add_datetime    DateTime @default(now())
+  update_datetime DateTime @default(now()) @updatedAt
 }
