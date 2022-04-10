@@ -1,16 +1,24 @@
 import { NextSeo } from 'next-seo';
-import ThemeChangeButton from '../components/parts/ThemeChangeButton';
+import { PrismaClient, think_flow } from '@prisma/client';
+import { GetStaticProps } from 'next';
+import ThinkFlow from '../components/thinkFlow';
 
-export default function Home() {
+type Props = {
+  thinkFlows: think_flow[];
+};
+
+export default function Home({ thinkFlows }: Props) {
   return (
     <>
       <NextSeo title='Home' description='Main page.' />
-      <p className='text-center text-8xl p-14 text-black dark:text-white'>
-        Here is main block
-      </p>
-      <div className='text-center'>
-        <ThemeChangeButton />
-      </div>
+      <ThinkFlow thinkFlows={thinkFlows} />
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const prisma = new PrismaClient();
+  let thinkFlows = await prisma.think_flow.findMany();
+  thinkFlows = JSON.parse(JSON.stringify(thinkFlows));
+  return { props: { thinkFlows } };
+};
