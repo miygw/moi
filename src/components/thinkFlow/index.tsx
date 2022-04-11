@@ -6,13 +6,10 @@ type Props = {
 };
 
 export default function ThinkFlow({ thinkFlows }: Props) {
-  // とりあえず、id逆順で表示しておく。
-  const sorted = thinkFlows.reverse();
-
   return (
     <>
       <p className='text-center py-5 text-xl'>miygw thinks...</p>
-      {sorted.map((thinkFlow) => (
+      {thinkFlows.map((thinkFlow) => (
         <Think key={thinkFlow.id} think={thinkFlow} />
       ))}
     </>
