@@ -12,6 +12,7 @@ export default function Footer() {
     <footer className='text-center text-gray-400 my-12'>
       <a className='m-4' href='https://github.com/miygw'>
         <Image
+          className='relative'
           src={path.posix.join('/', themeDir, 'github.svg')}
           alt='github'
           width={logoSize}
