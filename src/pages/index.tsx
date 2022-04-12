@@ -12,7 +12,7 @@ export default function Home({ thinkFlows }: Props) {
   return (
     <>
       <NextSeo title='Home' description='Main page.' />
-      <p className='text-center text-4xl py-4'>miygw</p>
+      <p className='text-center text-4xl pb-4'>miygw</p>
       <div className=' text-center'>
         <Image
           className='static'
