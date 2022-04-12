@@ -11,7 +11,7 @@ export default function Overlay() {
 
   return (
     <div
-      className={`${isShow} ${layout.zAxis.overlay} bg-black bg-opacity-30 fixed inset-0`}
+      className={`${isShow} ${layout.zIndex.overlay} bg-black bg-opacity-30 fixed inset-0`}
       onClick={() => context.setIsOpen(false)}
     />
   );

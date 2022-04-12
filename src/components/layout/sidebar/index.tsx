@@ -28,7 +28,7 @@ export default function GlobalNavigation() {
 
   return (
     <div
-      className={`${visibility} ${layout.zAxis.globalNavigation} bg-white dark:bg-black pt-4 fixed left-0 min-h-full w-3/4 sm:w-1/2 md:w-1/3 lg:visible lg:w-40 xl:visible xl:w-60 text-black dark:text-white`}
+      className={`${visibility} ${layout.zIndex.globalNavigation} bg-white dark:bg-black pt-4 fixed left-0 min-h-full w-3/4 sm:w-1/2 md:w-1/3 lg:visible lg:w-40 xl:visible xl:w-60 text-black dark:text-white`}
     >
       <ul>
         {ItemInfos.map((info) => (
