@@ -24,7 +24,7 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
       <div className='flex justify-center'>
         <GlobalNavigation />
         <Overlay />
-        <main className='mx-10 lg:max-w-xl xl:max-w-3xl'>{children}</main>
+        <main className='mx-3 lg:max-w-xl xl:max-w-3xl'>{children}</main>
       </div>
       <Footer />
     </div>
