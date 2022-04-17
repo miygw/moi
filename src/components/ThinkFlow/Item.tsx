@@ -7,16 +7,15 @@ type Props = {
 };
 
 export default function Item({ think }: Props) {
-  const url = think.url;
-  if (url === '' || url === null) {
-    return <span className=' mx-2'>{think.text}</span>;
+  if (!think.url) {
+    return <p className='text-center py-4'>{think.text}</p>;
   }
 
   return (
-    <span className='text-black dark:text-white hover:underline mx-2'>
+    <p className='text-center py-4 text-black dark:text-white hover:underline'>
       <Link href={typeResolve<string>(think.url)}>
         <a>{think.text}</a>
       </Link>
-    </span>
+    </p>
   );
 }
