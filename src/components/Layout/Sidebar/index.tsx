@@ -1,24 +1,9 @@
 import { useContext } from 'react';
-import { layout } from '../../../configs/layout';
+import { layoutConfigs } from '../../../configs/layoutConfigs';
+import { linkConfigs } from '../../../configs/linkConfigs';
 import ThemeChangeButton from '../../Parts/ThemeChangeButton';
 import { SidebarStateContext } from '../../Providers/SidebarStateProvider';
 import Item from './Item';
-
-// TODO: お前はconfigs行き
-const ItemInfos = [
-  {
-    href: '/',
-    text: 'Home',
-  },
-  {
-    href: '/writing',
-    text: 'writing',
-  },
-  {
-    href: '/miygw',
-    text: 'miygw',
-  },
-];
 
 export const GlobalNavigationPaddingLeft = 'pl-6';
 
@@ -28,10 +13,10 @@ export default function GlobalNavigation() {
 
   return (
     <div
-      className={`${visibility} ${layout.zIndex.globalNavigation} bg-white dark:bg-black pt-4 fixed left-0 min-h-full w-3/4 sm:w-1/2 md:w-1/3 lg:visible lg:w-40 xl:visible xl:w-60 text-black dark:text-white`}
+      className={`${visibility} ${layoutConfigs.zIndex.globalNavigation} bg-white dark:bg-black pt-4 fixed left-0 min-h-full w-3/4 sm:w-1/2 md:w-1/3 lg:visible lg:w-40 xl:visible xl:w-60 text-black dark:text-white`}
     >
       <ul>
-        {ItemInfos.map((info) => (
+        {linkConfigs.map((info) => (
           <li key={info.text}>
             <Item href={info.href} text={info.text} />
           </li>

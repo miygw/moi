@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { layout } from '../../configs/layout';
+import { layoutConfigs } from '../../configs/layoutConfigs';
 import { SidebarStateContext } from '../Providers/SidebarStateProvider';
 
 export default function Overlay() {
@@ -11,7 +11,7 @@ export default function Overlay() {
 
   return (
     <div
-      className={`${isShow} ${layout.zIndex.overlay} bg-black bg-opacity-30 fixed inset-0`}
+      className={`${isShow} ${layoutConfigs.zIndex.overlay} bg-black bg-opacity-30 fixed inset-0`}
       onClick={() => ctx.setIsOpen(false)}
     />
   );

@@ -1,4 +1,4 @@
-export const layout = {
+export const layoutConfigs = {
   zIndex: {
     globalNavigation: 'z-20',
     header: 'z-20',

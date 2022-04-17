@@ -1,7 +1,7 @@
 import 'tailwindcss/tailwind.css';
 import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
-import { defaultSeoProps } from '../configs/seo';
+import { defaultSeoProps } from '../configs/seoConfigs';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import * as gtag from '../lib/gtag';
