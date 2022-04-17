@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
-import { GlobalNavigationPaddingLeft } from '.';
+import { SidebarPaddingLeft } from '.';
 import { SidebarStateContext } from '../../Providers/SidebarStateProvider';
 
 /**
@@ -40,7 +40,7 @@ export default function Item({ href, text }: Props) {
 
   return (
     <div
-      className={`${GlobalNavigationPaddingLeft} ${onSelectedColor} h-8 hover:bg-sky-200 dark:hover:bg-sky-900`}
+      className={`${SidebarPaddingLeft} ${onSelectedColor} h-8 hover:bg-sky-200 dark:hover:bg-sky-900`}
     >
       <Link href={href}>
         <a className='h-full' onClick={closeSidebar}>

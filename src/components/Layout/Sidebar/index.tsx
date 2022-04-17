@@ -5,9 +5,9 @@ import ThemeChangeButton from '../../Parts/ThemeChangeButton';
 import { SidebarStateContext } from '../../Providers/SidebarStateProvider';
 import Item from './Item';
 
-export const GlobalNavigationPaddingLeft = 'pl-6';
+export const SidebarPaddingLeft = 'pl-6';
 
-export default function GlobalNavigation() {
+export default function Sidebar() {
   const ctx = useContext(SidebarStateContext);
   const visibility = ctx.isOpen ? `visible` : `invisible`;
 
@@ -35,7 +35,7 @@ export default function GlobalNavigation() {
           />
         </li>
       </ul>
-      <div className={`${GlobalNavigationPaddingLeft} pl-6 pt-8`}>
+      <div className={`${SidebarPaddingLeft} pl-6 pt-8`}>
         <ThemeChangeButton />
       </div>
     </div>
