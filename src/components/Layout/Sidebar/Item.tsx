@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
-import { GlobalNavigationContext } from '../../provider/GlobalNavigationProvider';
-import { GlobalNavigationPaddingLeft } from '.';
+import { SidebarPaddingLeft } from '.';
+import { SidebarStateContext } from '../../Providers/SidebarStateProvider';
 
 /**
  * 「actualPath が parentPath と一致、または parentPath のサブページである」が成り立つかを判断する。
@@ -22,7 +22,7 @@ type Props = {
   text: string;
 };
 
-export default function LinkItem({ href, text }: Props) {
+export default function Item({ href, text }: Props) {
   // このLinkItemが現在URLに対応するなら表示を強調する。
   const [isSelectedState, setIsSelectedState] = useState(false);
   const onSelectedColor = isSelectedState ? `bg-gray-200 dark:bg-zinc-800` : ``;
@@ -35,15 +35,15 @@ export default function LinkItem({ href, text }: Props) {
   }, [href, router.pathname]);
 
   // LinkItemクリック => サイドバーを閉じる処理
-  const globalNavigationContext = useContext(GlobalNavigationContext);
-  const closeGlobalNavigation = () => globalNavigationContext.setIsOpen(false);
+  const sidebarCtx = useContext(SidebarStateContext);
+  const closeSidebar = () => sidebarCtx.setIsOpen(false);
 
   return (
     <div
-      className={`${GlobalNavigationPaddingLeft} ${onSelectedColor} h-8 hover:bg-sky-200 dark:hover:bg-sky-900`}
+      className={`${SidebarPaddingLeft} ${onSelectedColor} h-8 hover:bg-sky-200 dark:hover:bg-sky-900`}
     >
       <Link href={href}>
-        <a className='h-full' onClick={closeGlobalNavigation}>
+        <a className='h-full' onClick={closeSidebar}>
           <div className='w-full h-full'>{text}</div>
         </a>
       </Link>

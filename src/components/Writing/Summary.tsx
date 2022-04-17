@@ -5,7 +5,7 @@ type Props = {
   metaData: MetaData;
 };
 
-const WritingSummary = ({ metaData }: Props) => {
+const Summary = ({ metaData }: Props) => {
   return (
     <div className='mb-10 hover:underline'>
       <Link href={`/writing/${metaData.dirName}`}>
@@ -21,4 +21,4 @@ const WritingSummary = ({ metaData }: Props) => {
   );
 };
 
-export default WritingSummary;
+export default Summary;

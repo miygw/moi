@@ -1,16 +1,17 @@
 import Image from 'next/image';
 import path from 'path';
 import { useContext } from 'react';
-import { ThemeContext } from '../provider/ThemeProvider';
+import { linkConfigs } from '../../../configs/linkConfigs';
+import { ThemeContext } from '../../Providers/ThemeProvider';
 
 const logoSize = '20px';
 
 export default function Footer() {
-  const context = useContext(ThemeContext);
-  const themeDir = context.isDark ? 'dark' : 'light';
+  const ctx = useContext(ThemeContext);
+  const themeDir = ctx.isDark ? 'dark' : 'light';
   return (
     <footer className='text-center text-gray-400 my-12'>
-      <a className='m-4' href='https://github.com/miygw'>
+      <a className='m-4' href={linkConfigs.social.github.href}>
         <Image
           className='relative'
           src={path.posix.join('/', themeDir, 'github.svg')}
@@ -19,7 +20,7 @@ export default function Footer() {
           height={logoSize}
         />
       </a>
-      <a className='m-4' href='https://twitter.com/6emcSYackedM6ar'>
+      <a className='m-4' href={linkConfigs.social.twitter.href}>
         <Image
           src={path.posix.join('/', themeDir, 'Twitter.svg')}
           alt='twitter'

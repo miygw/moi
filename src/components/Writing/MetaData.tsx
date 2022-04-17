@@ -4,7 +4,7 @@ type Props = {
   metaData: MetaData;
 };
 
-const MetaDataBlock = ({ metaData }: Props) => {
+const MetaData = ({ metaData }: Props) => {
   return (
     <div className='text-right py-4  border-t border-gray-400'>
       <ul className='xl:mr-8'>
@@ -16,4 +16,4 @@ const MetaDataBlock = ({ metaData }: Props) => {
   );
 };
 
-export default MetaDataBlock;
+export default MetaData;

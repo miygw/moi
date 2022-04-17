@@ -5,8 +5,8 @@ import {
   GetStaticPropsResult,
 } from 'next';
 import { NextSeo } from 'next-seo';
-import MetaDataBlock from '../../components/writing/MetaDataBlock';
-import View from '../../components/writing/View';
+import MetaData from '../../components/Writing/MetaData';
+import View from '../../components/Writing/View';
 import { typeResolve } from '../../lib/ts/type';
 import {
   getAllPaths,
@@ -21,7 +21,7 @@ export default function Writing({ contentHtml, metaData }: WritingInfo) {
     <>
       <NextSeo title={metaData.title} description={metaData.summary} />
       <View contentHtml={contentHtml} metaData={metaData} />
-      <MetaDataBlock metaData={metaData} />
+      <MetaData metaData={metaData} />
     </>
   );
 }

@@ -4,8 +4,8 @@ import html from 'remark-html';
 import gfm from 'remark-gfm';
 import { getRepoData, GitHubResponseData } from '../github/api';
 import { typeResolve } from '../ts/type';
-import { github } from '../../configs/github';
 import matter from 'gray-matter';
+import { githubConfigs } from '../../configs/githubConfigs';
 
 /**
  * 記事の情報を表す型。
@@ -62,13 +62,17 @@ type RawWritingInfo = {
  */
 export const getWritingInfo = async (postDirName: string) => {
   const filePath = path.posix.join(
-    github.api.dirPath,
+    githubConfigs.api.dirPath,
     postDirName,
-    github.api.fileName
+    githubConfigs.api.fileName
   );
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
   const fileData = typeResolve<GitHubResponseData>(
-    await getRepoData(github.api.ownerName, github.api.repoName, filePath)
+    await getRepoData(
+      githubConfigs.api.ownerName,
+      githubConfigs.api.repoName,
+      filePath
+    )
   );
   const rawWritingInfo: RawWritingInfo = { dirName: postDirName, fileData };
   return createResult(rawWritingInfo);
@@ -132,9 +136,9 @@ const markdownToHtml = async (markdown: string) => {
  */
 const getAllDirectoryData = async () => {
   const dirDataAll = await getRepoData(
-    github.api.ownerName,
-    github.api.repoName,
-    github.api.dirPath
+    githubConfigs.api.ownerName,
+    githubConfigs.api.repoName,
+    githubConfigs.api.dirPath
   );
   // writing直下のファイルは除外し、ディレクトリ情報だけにする。
   return dirDataAll.filter((data) => data.type === 'dir');
@@ -146,10 +150,14 @@ const getAllDirectoryData = async () => {
  */
 const getRawWritingInfos = async (dirData: GitHubResponseData) => {
   const dirPath = dirData.path;
-  const filePath = path.posix.join(dirPath, github.api.fileName);
+  const filePath = path.posix.join(dirPath, githubConfigs.api.fileName);
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
   const fileData = typeResolve<GitHubResponseData>(
-    await getRepoData(github.api.ownerName, github.api.repoName, filePath)
+    await getRepoData(
+      githubConfigs.api.ownerName,
+      githubConfigs.api.repoName,
+      filePath
+    )
   );
   const result: RawWritingInfo = { dirName: dirData.name, fileData };
   return result;

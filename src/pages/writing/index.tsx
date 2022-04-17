@@ -1,7 +1,7 @@
 import { isBefore } from 'date-fns';
 import { GetStaticProps, GetStaticPropsResult } from 'next';
 import { NextSeo } from 'next-seo';
-import WritingSummary from '../../components/writing/WritingSummary';
+import Summary from '../../components/Writing/Summary';
 import {
   getWritingInfos,
   MetaData as MetaData,
@@ -17,7 +17,7 @@ export default function WritingIndex({ metaDataArray }: Props) {
     <>
       <NextSeo title='writing' />
       {metaDataArraySorted.map((metaData) => (
-        <WritingSummary key={metaData.title} metaData={metaData} />
+        <Summary key={metaData.title} metaData={metaData} />
       ))}
     </>
   );

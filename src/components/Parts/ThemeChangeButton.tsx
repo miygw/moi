@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { applyIsDark } from '../../lib/theme';
-import { ThemeContext } from '../provider/ThemeProvider';
+import { ThemeContext } from '../Providers/ThemeProvider';
 
 export default function ThemeChangeButton() {
-  const context = useContext(ThemeContext);
+  const ctx = useContext(ThemeContext);
   const themeChange = () => {
-    let nextTheme = !context.isDark;
+    let nextTheme = !ctx.isDark;
     applyIsDark(nextTheme);
-    context.setIsDark(nextTheme);
+    ctx.setIsDark(nextTheme);
   };
 
   // TODO: 以下をやりたい

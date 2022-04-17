@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { useContext } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { GlobalNavigationContext } from '../../provider/GlobalNavigationProvider';
+import { SidebarStateContext } from '../../Providers/SidebarStateProvider';
 
 export default function Logo() {
-  const ctx = useContext(GlobalNavigationContext);
+  const ctx = useContext(SidebarStateContext);
   const setIsOpen = () => ctx.setIsOpen(!ctx.isOpen);
   const isLg = useMediaQuery({ query: '(min-width: 1024px)' });
   const doNothing = () => {};

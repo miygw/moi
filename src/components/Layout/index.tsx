@@ -1,10 +1,10 @@
 import { PropsWithChildren, useContext } from 'react';
 import { applyIsDark, isMatchTheme } from '../../lib/theme';
-import { ThemeContext } from '../provider/ThemeProvider';
+import { ThemeContext } from '../Providers/ThemeProvider';
 import Footer from './Footer';
-import Header from './header';
+import Header from './Header';
 import Overlay from './Overlay';
-import GlobalNavigation from './sidebar';
+import Sidebar from './Sidebar';
 
 export default function Layout({ children }: PropsWithChildren<{}>) {
   const themeContext = useContext(ThemeContext);
@@ -22,7 +22,7 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
     >
       <Header />
       <div className='flex justify-center'>
-        <GlobalNavigation />
+        <Sidebar />
         <Overlay />
         <main className='mx-3 lg:max-w-xl xl:max-w-3xl'>{children}</main>
       </div>

@@ -1,6 +1,6 @@
 import path from 'path';
 
-export const github = {
+export const githubConfigs = {
   api: {
     ownerName: 'miygw',
     fileName: 'writing.md',
