@@ -16,6 +16,7 @@ model think_flow {
   text            String
   note            String?
   url             String?
+  imgUrl          String?
   add_datetime    DateTime @default(now())
   update_datetime DateTime @default(now()) @updatedAt
 }
