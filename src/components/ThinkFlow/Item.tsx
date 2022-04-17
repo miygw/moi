@@ -6,7 +6,7 @@ type Props = {
   think: think_flow;
 };
 
-export default function Think({ think }: Props) {
+export default function Item({ think }: Props) {
   const url = think.url;
   if (url === '' || url === null) {
     return <span className=' mx-2'>{think.text}</span>;

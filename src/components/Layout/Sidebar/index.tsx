@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { layout } from '../../../configs/layout';
-import ThemeChangeButton from '../../parts/ThemeChangeButton';
-import { GlobalNavigationContext } from '../../provider/GlobalNavigationProvider';
-import LinkItem from './LinkItem';
+import ThemeChangeButton from '../../Parts/ThemeChangeButton';
+import { SidebarStateContext } from '../../Providers/SidebarStateProvider';
+import Item from './Item';
 
 // TODO: お前はconfigs行き
 const ItemInfos = [
@@ -23,7 +23,7 @@ const ItemInfos = [
 export const GlobalNavigationPaddingLeft = 'pl-6';
 
 export default function GlobalNavigation() {
-  const ctx = useContext(GlobalNavigationContext);
+  const ctx = useContext(SidebarStateContext);
   const visibility = ctx.isOpen ? `visible` : `invisible`;
 
   return (
@@ -33,7 +33,7 @@ export default function GlobalNavigation() {
       <ul>
         {ItemInfos.map((info) => (
           <li key={info.text}>
-            <LinkItem href={info.href} text={info.text} />
+            <Item href={info.href} text={info.text} />
           </li>
         ))}
       </ul>

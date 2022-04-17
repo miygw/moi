@@ -1,14 +1,13 @@
 import 'tailwindcss/tailwind.css';
 import type { AppProps } from 'next/app';
-import ThemeProvider from '../components/provider/ThemeProvider';
 import { DefaultSeo } from 'next-seo';
 import { defaultSeoProps } from '../configs/seo';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import * as gtag from '../lib/gtag';
-import GoogleAnalytics from '../components/GoogleAnalytics';
-import GlobalNavigationProvider from '../components/provider/GlobalNavigationProvider';
-import Layout from '../components/layout';
+import GoogleAnalytics from '../components/Head/GoogleAnalytics';
+import Providers from '../components/Providers';
+import Layout from '../components/Layout';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -25,14 +24,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <GoogleAnalytics />
-      <ThemeProvider>
-        <GlobalNavigationProvider>
-          <Layout>
-            <DefaultSeo {...defaultSeoProps} />
-            <Component {...pageProps} />
-          </Layout>
-        </GlobalNavigationProvider>
-      </ThemeProvider>
+      <Providers>
+        <Layout>
+          <DefaultSeo {...defaultSeoProps} />
+          <Component {...pageProps} />
+        </Layout>
+      </Providers>
     </>
   );
 }

@@ -1,17 +1,17 @@
 import { createContext, PropsWithChildren, useCallback, useState } from 'react';
 
-type GlobalNavigationContext = {
+type SidebarStateContext = {
   isOpen: boolean;
-  setIsOpen: (isOpenSidebar: boolean) => void;
+  setIsOpen: (isOpen: boolean) => void;
 };
 
-export const GlobalNavigationContext = createContext<GlobalNavigationContext>({
+export const SidebarStateContext = createContext<SidebarStateContext>({
   // モバイルファーストの為、false
   isOpen: false,
   setIsOpen: () => {},
 });
 
-export default function GlobalNavigationProvider({
+export default function SidebarStateProvider({
   children,
 }: PropsWithChildren<{}>) {
   const [isOpenState, setIsOpenState] = useState(false);
@@ -20,14 +20,14 @@ export default function GlobalNavigationProvider({
     []
   );
 
-  const ctx: GlobalNavigationContext = {
+  const ctx: SidebarStateContext = {
     isOpen: isOpenState,
     setIsOpen,
   };
 
   return (
-    <GlobalNavigationContext.Provider value={ctx}>
+    <SidebarStateContext.Provider value={ctx}>
       {children}
-    </GlobalNavigationContext.Provider>
+    </SidebarStateContext.Provider>
   );
 }

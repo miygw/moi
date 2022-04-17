@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import path from 'path';
 import { useContext } from 'react';
-import { ThemeContext } from '../provider/ThemeProvider';
+import { ThemeContext } from '../../Providers/ThemeProvider';
 
 const logoSize = '20px';
 
 export default function Footer() {
-  const context = useContext(ThemeContext);
-  const themeDir = context.isDark ? 'dark' : 'light';
+  const ctx = useContext(ThemeContext);
+  const themeDir = ctx.isDark ? 'dark' : 'light';
   return (
     <footer className='text-center text-gray-400 my-12'>
       <a className='m-4' href='https://github.com/miygw'>
