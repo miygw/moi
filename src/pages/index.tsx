@@ -1,8 +1,8 @@
 import { NextSeo } from 'next-seo';
 import { PrismaClient, think_flow } from '@prisma/client';
 import { GetStaticProps } from 'next';
-import ThinkFlow from '../components/ThinkFlow';
 import { shuffle } from '../lib/extensions/arrayExtension';
+import ThinkFlow from '../components/ThinkFlow';
 
 type Props = {
   thinkFlows: think_flow[];

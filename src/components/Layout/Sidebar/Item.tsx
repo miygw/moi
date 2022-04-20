@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
-import { SidebarPaddingLeft } from '.';
 import { SidebarStateContext } from '../../Providers/SidebarStateProvider';
+import { SidebarPaddingLeft } from './Sidebar';
 
 /**
  * 「actualPath が parentPath と一致、または parentPath のサブページである」が成り立つかを判断する。

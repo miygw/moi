@@ -5,9 +5,9 @@ import { defaultSeoProps } from '../configs/seoConfigs';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import * as gtag from '../lib/gtag';
-import GoogleAnalytics from '../components/Head/GoogleAnalytics';
-import Providers from '../components/Providers';
 import Layout from '../components/Layout';
+import Providers from '../components/Providers';
+import Head from '../components/Head';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -23,7 +23,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <GoogleAnalytics />
+      <Head />
       <Providers>
         <Layout>
           <DefaultSeo {...defaultSeoProps} />

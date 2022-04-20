@@ -1,7 +1,7 @@
 import { isBefore } from 'date-fns';
 import { GetStaticProps, GetStaticPropsResult } from 'next';
 import { NextSeo } from 'next-seo';
-import Summary from '../../components/Writing/Summary';
+import { Summary } from '../../components/Writing';
 import {
   getWritingInfos,
   MetaData as MetaData,

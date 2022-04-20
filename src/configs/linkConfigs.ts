@@ -1,26 +1,36 @@
-export const linkConfigs = {
-  moi: {
-    home: {
+type LinkConfigs = {
+  moi: LinkInfo[];
+  social: LinkInfo[];
+};
+
+type LinkInfo = {
+  href: string;
+  text?: string;
+};
+
+export const linkConfigs: LinkConfigs = {
+  moi: [
+    {
       href: '/',
       text: 'Home',
     },
-    writing: {
+    {
       href: '/writing',
       text: 'writing',
     },
-    miygw: {
+    {
       href: '/miygw',
       text: 'miygw',
     },
-  },
-  social: {
-    twitter: {
+  ],
+  social: [
+    {
       href: 'https://github.com/miygw',
-      text: '',
+      text: 'GitHub',
     },
-    github: {
-      href: 'https://github.com/miygw',
-      text: '',
+    {
+      href: 'https://twitter.com/6emcSYackedM6ar',
+      text: 'Twitter',
     },
-  },
+  ],
 };

@@ -5,8 +5,7 @@ import {
   GetStaticPropsResult,
 } from 'next';
 import { NextSeo } from 'next-seo';
-import MetaData from '../../components/Writing/MetaData';
-import View from '../../components/Writing/View';
+import { MetaData, View } from '../../components/Writing';
 import { typeResolve } from '../../lib/ts/type';
 import {
   getAllPaths,

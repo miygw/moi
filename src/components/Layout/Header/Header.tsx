@@ -1,6 +1,6 @@
 import { layoutConfigs } from '../../../configs/layoutConfigs';
 import HeaderLogo from './HeaderLogo';
-import PageName from './PageName';
+import PageTitle from './PageName';
 
 export default function Header() {
   return (
@@ -8,7 +8,7 @@ export default function Header() {
       className={`${layoutConfigs.zIndex.header} sticky flex top-0 bg-white dark:bg-black text-center`}
     >
       <HeaderLogo />
-      <PageName />
+      <PageTitle />
     </header>
   );
 }
