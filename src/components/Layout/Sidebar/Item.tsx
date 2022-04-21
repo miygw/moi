@@ -44,7 +44,7 @@ export default function Item({ href, text }: Props) {
     >
       <Link href={href}>
         <a className='h-full' onClick={closeSidebar}>
-          <div className='w-full h-full'>{text}</div>
+          <div className='h-full w-full'>{text}</div>
         </a>
       </Link>
     </div>

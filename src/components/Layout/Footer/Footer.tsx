@@ -11,7 +11,7 @@ export default function Footer() {
   const themeDir = ctx.isDark ? 'dark' : 'light';
 
   return (
-    <footer className='text-center text-gray-400 my-12'>
+    <footer className='my-12 text-center text-gray-400'>
       <a
         className='m-4'
         href={

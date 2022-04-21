@@ -16,7 +16,7 @@ export default function ThemeChangeButton() {
   return (
     <button
       onClick={themeChange}
-      className='dark:text-white bg-blue-500 hover:bg-blue-700 text-white py-2 px-4'
+      className='bg-blue-500 py-2 px-4 text-white hover:bg-blue-700 dark:text-white'
     >
       {`Change Theme`}
     </button>

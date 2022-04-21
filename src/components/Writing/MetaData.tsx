@@ -6,7 +6,7 @@ type Props = {
 
 const MetaData = ({ metaData }: Props) => {
   return (
-    <div className='text-right py-4  border-t border-gray-400'>
+    <div className='border-t border-gray-400  py-4 text-right'>
       <ul className='xl:mr-8'>
         <li className='ml-4'>{`title: ${metaData.title}`}</li>
         <li className='ml-4'>{`date: ${metaData.date}`}</li>

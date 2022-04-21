@@ -5,7 +5,7 @@ import PageTitle from './PageName';
 export default function Header() {
   return (
     <header
-      className={`${layoutConfigs.zIndex.header} sticky flex top-0 bg-white dark:bg-black text-center`}
+      className={`${layoutConfigs.zIndex.header} sticky top-0 flex bg-white text-center dark:bg-black`}
     >
       <HeaderLogo />
       <PageTitle />

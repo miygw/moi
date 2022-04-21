@@ -8,11 +8,11 @@ type Props = {
 
 export default function Item({ think }: Props) {
   if (!think.url) {
-    return <p className='text-center py-4'>{think.text}</p>;
+    return <p className='py-4 text-center'>{think.text}</p>;
   }
 
   return (
-    <p className='text-center py-4 text-black dark:text-white hover:underline'>
+    <p className='py-4 text-center text-black hover:underline dark:text-white'>
       <Link href={typeResolve<string>(think.url)}>
         <a>{think.text}</a>
       </Link>
