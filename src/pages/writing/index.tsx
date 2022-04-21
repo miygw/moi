@@ -1,6 +1,6 @@
 import { isBefore } from 'date-fns';
 import { GetStaticProps, GetStaticPropsResult } from 'next';
-import { NextSeo } from 'next-seo';
+import { DynamicHead } from '../../components/Head';
 import { Summary } from '../../components/Writing';
 import {
   getWritingInfos,
@@ -15,7 +15,7 @@ export default function WritingIndex({ metaDataArray }: Props) {
   const metaDataArraySorted = sortMetaDataArrayByDateDesc(metaDataArray);
   return (
     <>
-      <NextSeo title='writing' />
+      <DynamicHead title='writing' />
       {metaDataArraySorted.map((metaData) => (
         <Summary key={metaData.title} metaData={metaData} />
       ))}

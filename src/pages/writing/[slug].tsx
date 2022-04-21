@@ -4,7 +4,7 @@ import {
   GetStaticProps,
   GetStaticPropsResult,
 } from 'next';
-import { NextSeo } from 'next-seo';
+import { DynamicHead } from '../../components/Head';
 import { MetaData, View } from '../../components/Writing';
 import { typeResolve } from '../../lib/ts/type';
 import {
@@ -18,7 +18,7 @@ export default function Writing({ contentHtml, metaData }: WritingInfo) {
   // TODO: 上部に戻る、下部に次の記事・前の記事
   return (
     <>
-      <NextSeo title={metaData.title} description={metaData.summary} />
+      <DynamicHead title={metaData.title} description={metaData.summary} />
       <View contentHtml={contentHtml} metaData={metaData} />
       <MetaData metaData={metaData} />
     </>

@@ -1,8 +1,8 @@
-import { NextSeo } from 'next-seo';
 import { PrismaClient, think_flow } from '@prisma/client';
 import { GetStaticProps } from 'next';
 import { shuffle } from '../lib/extensions/arrayExtension';
 import ThinkFlow from '../components/ThinkFlow';
+import { DynamicHead } from '../components/Head';
 
 type Props = {
   thinkFlows: think_flow[];
@@ -11,7 +11,7 @@ type Props = {
 export default function Home({ thinkFlows }: Props) {
   return (
     <>
-      <NextSeo title='Home' description='Main page.' />
+      <DynamicHead title='Home' description='Main page.' />
       <div className='py-5'>
         <ThinkFlow thinkFlows={thinkFlows} />
       </div>

@@ -1,10 +1,10 @@
-import { NextSeo } from 'next-seo';
 import Image from 'next/image';
+import { DynamicHead } from '../../components/Head';
 
 export default function Miygw() {
   return (
     <>
-      <NextSeo title='miygw' />
+      <DynamicHead title={'miygw'} />
       <div className='my-4 text-center'>
         <Image
           className='static'
