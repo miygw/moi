@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
+import { PageTitleContext } from '../../Providers/PageTItleProvider';
 
 export default function PageTitle() {
-  const router = useRouter();
+  const ctx = useContext(PageTitleContext);
   const [title, setTitle] = useState('');
 
-  useEffect(() => setTitle(router.pathname), [router]);
+  useEffect(() => setTitle(ctx.title), [ctx]);
 
   // TODO: text-ellipsis が効かない。レイアウト維持のための苦肉の策として、overflow-hidden 適用中
   return (
