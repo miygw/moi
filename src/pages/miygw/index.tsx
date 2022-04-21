@@ -1,16 +1,10 @@
-import { NextSeo } from 'next-seo';
 import Image from 'next/image';
-import { useContext } from 'react';
-import { PageTitleContext } from '../../components/Providers/PageTItleProvider';
+import { DynamicHead } from '../../components/Head';
 
 export default function Miygw() {
-  const pageTitle = 'miygw';
-  const pageTitleCtx = useContext(PageTitleContext);
-  pageTitleCtx.setTitle(pageTitle);
-
   return (
     <>
-      <NextSeo title={pageTitle} />
+      <DynamicHead title={'miygw'} />
       <div className='my-4 text-center'>
         <Image
           className='static'

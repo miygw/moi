@@ -4,9 +4,7 @@ import {
   GetStaticProps,
   GetStaticPropsResult,
 } from 'next';
-import { NextSeo } from 'next-seo';
-import { useContext } from 'react';
-import { PageTitleContext } from '../../components/Providers/PageTItleProvider';
+import { DynamicHead } from '../../components/Head';
 import { MetaData, View } from '../../components/Writing';
 import { typeResolve } from '../../lib/ts/type';
 import {
@@ -17,14 +15,10 @@ import {
 import { SlugParams } from '../../types/pages';
 
 export default function Writing({ contentHtml, metaData }: WritingInfo) {
-  const pageTitle = metaData.title;
-  const pageTitleCtx = useContext(PageTitleContext);
-  pageTitleCtx.setTitle(pageTitle);
-
   // TODO: 上部に戻る、下部に次の記事・前の記事
   return (
     <>
-      <NextSeo title={pageTitle} description={metaData.summary} />
+      <DynamicHead title={metaData.title} description={metaData.summary} />
       <View contentHtml={contentHtml} metaData={metaData} />
       <MetaData metaData={metaData} />
     </>
