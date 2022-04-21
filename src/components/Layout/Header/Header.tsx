@@ -1,6 +1,6 @@
 import { layoutConfigs } from '../../../configs/layoutConfigs';
 import HeaderLogo from './HeaderLogo';
-import PageTitle from './PageName';
+import PageTitle from './PageTitle';
 
 export default function Header() {
   return (
