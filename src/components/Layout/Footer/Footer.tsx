@@ -1,14 +1,14 @@
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import path from 'path';
 import { useContext } from 'react';
 import { linkConfigs } from '../../../configs/linkConfigs';
-import { ThemeContext } from '../../Providers/ThemeProvider';
 
 const logoSize = '20px';
 
 export default function Footer() {
-  const ctx = useContext(ThemeContext);
-  const themeDir = ctx.isDark ? 'dark' : 'light';
+  const { theme } = useTheme();
+  const themeDir = theme === 'dark' ? 'dark' : 'light';
 
   return (
     <footer className='my-12 text-center text-gray-400'>
