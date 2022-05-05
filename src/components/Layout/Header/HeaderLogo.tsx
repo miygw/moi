@@ -7,9 +7,9 @@ export default function Logo() {
   return (
     <div
       onClick={displaySidebar ? () => closeSidebar() : () => openSidebar()}
-      className='min-w-fit lg:m-1'
+      className='min-w-fit'
     >
-      <Image src='/miygw.jpg' alt='logo' width={45} height={45} />
+      <Image src='/miygw.jpg' alt='logo' width={50} height={50} />
     </div>
   );
 }
