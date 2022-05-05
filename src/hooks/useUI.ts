@@ -1,4 +1,4 @@
-import { useUIActions, useUIState } from '../components/Providers/UIProvider';
+import { useUIActions, useUIState } from '../components/Providers';
 
 const useUI = () => {
   const stateContext = useUIState();

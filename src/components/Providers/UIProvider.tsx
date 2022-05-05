@@ -9,14 +9,18 @@ type UIState = {
   pageTitle: string;
   displaySidebar: boolean;
 };
-
-const UIStateValue: UIState = { pageTitle: '', displaySidebar: false };
-const UIStateContext = createContext<UIState | null>(UIStateValue);
+const initialUIState: UIState = { pageTitle: '', displaySidebar: false };
 
 type UIActionType =
   | { type: 'SET_PAGE_TITLE'; value: string }
   | { type: 'OPEN_SIDEBAR' }
   | { type: 'CLOSE_SIDEBAR' };
+
+type UIActions = {
+  setPageTitle: (value: string) => void;
+  openSidebar: () => void;
+  closeSidebar: () => void;
+};
 
 const uiReducer = (state: UIState, action: UIActionType): UIState => {
   switch (action.type) {
@@ -31,15 +35,12 @@ const uiReducer = (state: UIState, action: UIActionType): UIState => {
   }
 };
 
-export type UIActions = {
-  setPageTitle: (value: string) => void;
-  openSidebar: () => void;
-  closeSidebar: () => void;
-};
+// useUIでラップするため、exportしない。
+const UIStateContext = createContext<UIState | null>(null);
 const UIActionsContext = createContext<UIActions | null>(null);
 
 export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [state, dispatch] = useReducer(uiReducer, UIStateValue);
+  const [state, dispatch] = useReducer(uiReducer, initialUIState);
   const setPageTitle = (value: string) =>
     dispatch({ type: 'SET_PAGE_TITLE', value });
   const openSidebar = () => dispatch({ type: 'OPEN_SIDEBAR' });
