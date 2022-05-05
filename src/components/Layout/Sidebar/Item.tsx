@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
-import { SidebarStateContext } from '../../Providers/SidebarStateProvider';
+import { useEffect, useState } from 'react';
+import { useUI } from '../../../hooks/useUI';
 import { SidebarPaddingLeft } from './Sidebar';
 
 /**
@@ -35,15 +35,14 @@ export default function Item({ href, text }: Props) {
   }, [href, router.pathname]);
 
   // LinkItemクリック => サイドバーを閉じる処理
-  const sidebarCtx = useContext(SidebarStateContext);
-  const closeSidebar = () => sidebarCtx.setIsOpen(false);
+  const { closeSidebar } = useUI();
 
   return (
     <div
       className={`${SidebarPaddingLeft} ${onSelectedColor} h-8 hover:bg-sky-200 dark:hover:bg-sky-900`}
     >
       <Link href={href}>
-        <a className='h-full' onClick={closeSidebar}>
+        <a className='h-full' onClick={() => closeSidebar()}>
           <div className='h-full w-full'>{text}</div>
         </a>
       </Link>

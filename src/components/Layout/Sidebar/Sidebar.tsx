@@ -1,15 +1,15 @@
 import { useContext } from 'react';
 import { layoutConfigs } from '../../../configs/layoutConfigs';
 import { linkConfigs } from '../../../configs/linkConfigs';
+import { useUI } from '../../../hooks/useUI';
 import ThemeChangeButton from '../../Parts/ThemeChangeButton';
-import { SidebarStateContext } from '../../Providers/SidebarStateProvider';
 import Item from './Item';
 
 export const SidebarPaddingLeft = 'pl-6';
 
 export default function Sidebar() {
-  const ctx = useContext(SidebarStateContext);
-  const visibility = ctx.isOpen ? `visible` : `invisible`;
+  const { displaySidebar } = useUI();
+  const visibility = displaySidebar ? `visible` : `invisible`;
 
   return (
     <div
