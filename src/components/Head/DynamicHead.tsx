@@ -1,5 +1,5 @@
 import { NextSeo, NextSeoProps } from 'next-seo';
-import { useUI } from '../../hooks/useUI';
+import { useUI } from '../../hooks';
 
 export default function DynamicHead({ ...props }: NextSeoProps) {
   const { setPageTitle, pageTitle } = useUI();

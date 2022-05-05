@@ -1,6 +1,6 @@
 import { useUIActions, useUIState } from '../components/Providers/UIProvider';
 
-export const useUI = () => {
+const useUI = () => {
   const stateContext = useUIState();
   const actionsContext = useUIActions();
 
@@ -10,3 +10,5 @@ export const useUI = () => {
 
   return { ...stateContext, ...actionsContext };
 };
+
+export default useUI;

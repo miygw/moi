@@ -5,7 +5,7 @@ import { defaultSeoProps } from '../configs/seoConfigs';
 import Layout from '../components/Layout';
 import Providers from '../components/Providers';
 import Head from '../components/Head';
-import { useGAWithRouter } from '../hooks/useGAWithRouter';
+import { useGAWithRouter } from '../hooks';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   useGAWithRouter();

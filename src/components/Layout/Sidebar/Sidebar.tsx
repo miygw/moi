@@ -1,7 +1,6 @@
-import { useContext } from 'react';
 import { layoutConfigs } from '../../../configs/layoutConfigs';
 import { linkConfigs } from '../../../configs/linkConfigs';
-import { useUI } from '../../../hooks/useUI';
+import { useUI } from '../../../hooks';
 import ThemeChangeButton from '../../Parts/ThemeChangeButton';
 import Item from './Item';
 

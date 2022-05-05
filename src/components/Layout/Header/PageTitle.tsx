@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useUI } from '../../../hooks/useUI';
+import { useUI } from '../../../hooks';
 
 export default function PageTitle() {
   const { pageTitle } = useUI();

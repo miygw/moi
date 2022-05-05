@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { typeResolve } from '../lib/ts/type';
 
-export function useGAWithRouter() {
+const useGAWithRouter = () => {
   const router = useRouter();
   useEffect(() => {
     const gaHandler = (url: string) => {
@@ -18,4 +18,6 @@ export function useGAWithRouter() {
       router.events.off('routeChangeComplete', gaHandler);
     };
   }, [router.events]);
-}
+};
+
+export default useGAWithRouter;
