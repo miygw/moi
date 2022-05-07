@@ -3,6 +3,8 @@ import { linkConfigs } from '../../../configs/linkConfigs';
 import { useUI } from '../../../hooks';
 import ThemeChangeButton from '../../Parts/ThemeChangeButton';
 import Item from './Item';
+import { HomeIcon, PencilIcon } from '@heroicons/react/solid';
+import Image from 'next/image';
 
 export const SidebarPaddingLeft = 'pl-6';
 
@@ -19,19 +21,25 @@ export default function Sidebar() {
           <Item
             href={linkConfigs.moi.Home.href}
             text={linkConfigs.moi.Home.text}
-          />
+          >
+            <HomeIcon className='h-5 w-5' />
+          </Item>
         </li>
         <li>
           <Item
             href={linkConfigs.moi.writing.href}
             text={linkConfigs.moi.writing.text}
-          />
+          >
+            <PencilIcon className='h-5 w-5' />
+          </Item>
         </li>
         <li>
           <Item
             href={linkConfigs.moi.miygw.href}
             text={linkConfigs.moi.miygw.text}
-          />
+          >
+            <Image src='/miygw.ico' height='20' width='20' alt='miygw' />
+          </Item>
         </li>
       </ul>
       <div className={`${SidebarPaddingLeft} pl-6 pt-8`}>
