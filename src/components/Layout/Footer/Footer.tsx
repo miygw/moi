@@ -1,14 +1,19 @@
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import path from 'path';
-import { useContext } from 'react';
+import { useCallback } from 'react';
 import { linkConfigs } from '../../../configs/linkConfigs';
 
 const logoSize = '20px';
 
 export default function Footer() {
-  const { theme } = useTheme();
-  const themeDir = theme === 'dark' ? 'dark' : 'light';
+  const { theme, systemTheme } = useTheme();
+
+  const getThemeDir = useCallback(() => {
+    if (!theme && !systemTheme) return 'light';
+    if (!theme) return systemTheme!;
+    return theme === 'dark' ? 'dark' : 'light';
+  }, [systemTheme, theme]);
 
   return (
     <footer className='my-12 text-center text-gray-400'>
@@ -20,7 +25,7 @@ export default function Footer() {
       >
         <Image
           className='relative'
-          src={path.posix.join('/', themeDir, 'github.svg')}
+          src={path.posix.join('/', getThemeDir(), 'github.svg')}
           alt='github'
           width={logoSize}
           height={logoSize}
@@ -33,7 +38,7 @@ export default function Footer() {
         }
       >
         <Image
-          src={path.posix.join('/', themeDir, 'Twitter.svg')}
+          src={path.posix.join('/', getThemeDir(), 'Twitter.svg')}
           alt='twitter'
           width={logoSize}
           height={logoSize}
