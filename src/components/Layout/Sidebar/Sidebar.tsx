@@ -3,7 +3,7 @@ import { linkConfigs } from '../../../configs/linkConfigs';
 import { useUI } from '../../../hooks';
 import ThemeChangeButton from '../../Parts/ThemeChangeButton';
 import Item from './Item';
-import { HomeIcon, PencilIcon } from '@heroicons/react/solid';
+import { HomeIcon, PencilIcon, LightBulbIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 
 export const SidebarPaddingLeft = 'pl-6';
@@ -31,6 +31,14 @@ export default function Sidebar() {
             text={linkConfigs.moi.writing.text}
           >
             <PencilIcon className='h-5 w-5' />
+          </Item>
+        </li>
+        <li>
+          <Item
+            href={linkConfigs.moi.thinkFlow.href}
+            text={linkConfigs.moi.thinkFlow.text}
+          >
+            <LightBulbIcon className='h-5 w-5' />
           </Item>
         </li>
         <li>

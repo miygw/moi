@@ -8,6 +8,10 @@ export const linkConfigs = {
       href: '/writing',
       text: 'writing',
     },
+    thinkFlow: {
+      href: '/think-flow',
+      text: 'Think Flow',
+    },
     miygw: {
       href: '/miygw',
       text: 'miygw',
