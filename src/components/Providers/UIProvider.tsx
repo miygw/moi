@@ -41,11 +41,11 @@ const UIActionsContext = createContext<UIActions | null>(null);
 
 export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
   const [state, dispatch] = useReducer(uiReducer, initialUIState);
+
   const setPageTitle = (value: string) =>
     dispatch({ type: 'SET_PAGE_TITLE', value });
   const openSidebar = () => dispatch({ type: 'OPEN_SIDEBAR' });
   const closeSidebar = () => dispatch({ type: 'CLOSE_SIDEBAR' });
-
   const actions: UIActions = { setPageTitle, openSidebar, closeSidebar };
 
   return (
