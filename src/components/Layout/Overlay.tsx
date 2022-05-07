@@ -1,7 +1,7 @@
 import { layoutConfigs } from '../../configs/layoutConfigs';
 import { useUI } from '../../hooks';
 
-export default function Overlay() {
+export const Overlay = () => {
   const { displaySidebar, closeSidebar } = useUI();
 
   const isShow = displaySidebar
@@ -14,4 +14,4 @@ export default function Overlay() {
       onClick={() => closeSidebar()}
     />
   );
-}
+};

@@ -1,1 +1,1 @@
-export { default } from './ThinkFlow';
+export { ThinkFlow as default } from './ThinkFlow';

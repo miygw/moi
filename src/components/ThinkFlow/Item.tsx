@@ -6,7 +6,7 @@ type Props = {
   think: think_flow;
 };
 
-export default function Item({ think }: Props) {
+export const Item = ({ think }: Props) => {
   if (!think.url) {
     return <p className='py-4 text-center'>{think.text}</p>;
   }
@@ -18,4 +18,4 @@ export default function Item({ think }: Props) {
       </Link>
     </p>
   );
-}
+};

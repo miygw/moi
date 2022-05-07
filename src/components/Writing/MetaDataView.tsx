@@ -4,7 +4,7 @@ type Props = {
   metaData: MetaData;
 };
 
-const MetaData = ({ metaData }: Props) => {
+export const MetaDataView = ({ metaData }: Props) => {
   const elements = [
     `title: ${metaData.title}`,
     `date: ${metaData.date}`,
@@ -22,5 +22,3 @@ const MetaData = ({ metaData }: Props) => {
     </div>
   );
 };
-
-export default MetaData;

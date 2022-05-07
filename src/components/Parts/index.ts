@@ -1,1 +1,1 @@
-export { default as ThemeChangeButton } from './ThemeChangeButton';
+export { ThemeChangeButton as default } from './ThemeChangeButton';

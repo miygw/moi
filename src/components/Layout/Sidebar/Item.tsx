@@ -22,11 +22,7 @@ type Props = {
   text: string;
 };
 
-export default function Item({
-  href,
-  text,
-  children,
-}: PropsWithChildren<Props>) {
+export const Item = ({ href, text, children }: PropsWithChildren<Props>) => {
   // このLinkItemが現在URLに対応するなら表示を強調する。
   const [isSelectedState, setIsSelectedState] = useState(false);
   const onSelectedColor = isSelectedState ? `bg-gray-200 dark:bg-zinc-800` : ``;
@@ -57,4 +53,4 @@ export default function Item({
       </Link>
     </div>
   );
-}
+};

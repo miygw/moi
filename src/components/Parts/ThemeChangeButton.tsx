@@ -1,6 +1,6 @@
 import { useTheme } from 'next-themes';
 
-export default function ThemeChangeButton() {
+export const ThemeChangeButton = () => {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -11,4 +11,4 @@ export default function ThemeChangeButton() {
       {`Change Theme`}
     </button>
   );
-}
+};

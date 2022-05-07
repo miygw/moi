@@ -1,14 +1,14 @@
 import { layoutConfigs } from '../../../configs/layoutConfigs';
 import { linkConfigs } from '../../../configs/linkConfigs';
 import { useUI } from '../../../hooks';
-import ThemeChangeButton from '../../Parts/ThemeChangeButton';
-import Item from './Item';
+import { ThemeChangeButton } from '../../Parts/ThemeChangeButton';
 import { HomeIcon, PencilIcon, LightBulbIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
+import { Item } from './Item';
 
 export const SidebarPaddingLeft = 'pl-6';
 
-export default function Sidebar() {
+export const Sidebar = () => {
   const { displaySidebar } = useUI();
   const visibility = displaySidebar ? `visible` : `invisible`;
 
@@ -55,4 +55,4 @@ export default function Sidebar() {
       </div>
     </div>
   );
-}
+};

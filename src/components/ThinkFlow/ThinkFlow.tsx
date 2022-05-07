@@ -1,11 +1,11 @@
 import { think_flow } from '@prisma/client';
-import Item from './Item';
+import { Item } from './Item';
 
 type Props = {
   thinkFlows: think_flow[];
 };
 
-export default function ThinkFlow({ thinkFlows }: Props) {
+export const ThinkFlow = ({ thinkFlows }: Props) => {
   return (
     <>
       {thinkFlows.map((thinkFlow) => (
@@ -13,4 +13,4 @@ export default function ThinkFlow({ thinkFlows }: Props) {
       ))}
     </>
   );
-}
+};

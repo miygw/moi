@@ -3,7 +3,7 @@ import Image from 'next/image';
 import path from 'path';
 import { linkConfigs } from '../../../configs/linkConfigs';
 
-export default function Footer() {
+export const Footer = () => {
   const { resolvedTheme } = useTheme();
   const themeDir = resolvedTheme === 'dark' ? 'dark' : 'light';
 
@@ -30,4 +30,4 @@ export default function Footer() {
       </a>
     </footer>
   );
-}
+};

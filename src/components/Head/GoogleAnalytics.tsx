@@ -1,7 +1,7 @@
 import Script from 'next/script';
 import { typeResolve } from '../../lib/ts/type';
 
-export default function GoogleAnalytics() {
+export const GoogleAnalytics = () => {
   return (
     <>
       <Script
@@ -28,4 +28,4 @@ export default function GoogleAnalytics() {
       />
     </>
   );
-}
+};

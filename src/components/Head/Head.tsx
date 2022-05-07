@@ -1,5 +1,5 @@
-import GoogleAnalytics from './GoogleAnalytics';
+import { GoogleAnalytics } from './GoogleAnalytics';
 
-export default function Head() {
+export const Head = () => {
   return <GoogleAnalytics />;
-}
+};

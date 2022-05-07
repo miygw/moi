@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react';
 import Footer from './Footer';
 import Header from './Header';
-import Overlay from './Overlay';
+import { Overlay } from './Overlay';
 import Sidebar from './Sidebar';
 
-export default function Layout({ children }: PropsWithChildren<{}>) {
+export const Layout = ({ children }: PropsWithChildren<{}>) => {
   return (
     <div className='mx-auto text-gray-500 dark:text-gray-400'>
       <Header />
@@ -16,4 +16,4 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
       <Footer />
     </div>
   );
-}
+};
