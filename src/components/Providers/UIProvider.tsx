@@ -8,8 +8,8 @@ import {
 type UIState = {
   pageTitle: string;
   displaySidebar: boolean;
+  displayOverlay: boolean;
 };
-const initialUIState: UIState = { pageTitle: '', displaySidebar: false };
 
 type UIActionType =
   | { type: 'SET_PAGE_TITLE'; value: string }
@@ -40,6 +40,12 @@ const UIStateContext = createContext<UIState | null>(null);
 const UIActionsContext = createContext<UIActions | null>(null);
 
 export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
+  const initialUIState: UIState = {
+    pageTitle: '',
+    displaySidebar: false,
+    displayOverlay: false,
+  };
+
   const [state, dispatch] = useReducer(uiReducer, initialUIState);
 
   const setPageTitle = (value: string) =>
