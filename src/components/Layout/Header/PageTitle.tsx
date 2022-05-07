@@ -1,4 +1,3 @@
-import { useContext, useEffect, useState } from 'react';
 import { useUI } from '../../../hooks';
 
 export default function PageTitle() {
