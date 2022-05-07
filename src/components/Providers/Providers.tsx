@@ -1,14 +1,11 @@
 import { ThemeProvider } from 'next-themes';
 import { PropsWithChildren } from 'react';
-import PageTitleProvider from './PageTItleProvider';
-import SidebarStateProvider from './SidebarStateProvider';
+import { UIProvider } from './UIProvider';
 
 export default function Providers({ children }: PropsWithChildren<{}>) {
   return (
-    <PageTitleProvider>
-      <ThemeProvider attribute='class'>
-        <SidebarStateProvider>{children}</SidebarStateProvider>
-      </ThemeProvider>
-    </PageTitleProvider>
+    <ThemeProvider attribute='class'>
+      <UIProvider>{children}</UIProvider>
+    </ThemeProvider>
   );
 }
