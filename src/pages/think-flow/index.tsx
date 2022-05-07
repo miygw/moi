@@ -12,9 +12,7 @@ export default function ThinkFlowPage({ thinkFlows }: Props) {
   return (
     <>
       <DynamicHead title='Think Flow' />
-      <div className='py-5'>
-        <ThinkFlow thinkFlows={thinkFlows} />
-      </div>
+      <ThinkFlow thinkFlows={thinkFlows} />
     </>
   );
 }
