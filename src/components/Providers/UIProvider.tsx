@@ -17,7 +17,6 @@ type UIActionType =
   | { type: 'SET_PAGE_TITLE'; value: string }
   | { type: 'OPEN_SIDEBAR' }
   | { type: 'CLOSE_SIDEBAR' }
-  | { type: 'OPEN_OVERLAY' }
   | { type: 'CLOSE_OVERLAY' };
 
 type UIActions = {
@@ -47,9 +46,9 @@ export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
       case 'OPEN_SIDEBAR':
         return { ...state, displaySidebar: true, displayOverlay: !isLg };
       case 'CLOSE_SIDEBAR':
+        // デスクトップサイズならサイドバーは常に表示する
+        if (isLg) return state;
         return { ...state, displaySidebar: false, displayOverlay: false };
-      case 'OPEN_OVERLAY':
-        return { ...state, displayOverlay: true };
       case 'CLOSE_OVERLAY':
         console.log('called');
         return { ...state, displayOverlay: false };
@@ -64,12 +63,18 @@ export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
     dispatch({ type: 'SET_PAGE_TITLE', value });
   const openSidebar = () => dispatch({ type: 'OPEN_SIDEBAR' });
   const closeSidebar = () => dispatch({ type: 'CLOSE_SIDEBAR' });
-  const closeOverlay = () => dispatch({ type: 'CLOSE_OVERLAY' });
+  // オーバーレイの制御はこのコンポーネントで行うため配信しない。
   const actions: UIActions = { setPageTitle, openSidebar, closeSidebar };
 
+  // サイドバー表示中のモバイルサイズからデスクトップサイズに変わった場合、
+  // オーバーレイを非表示にする。
   useEffect(() => {
-    // デスクトップサイズからモバイルサイズに変わった場合、
-    // デスクトップサイズでは固定表示のサイドバーを閉じる。
+    if (isLg && state.displaySidebar) dispatch({ type: 'CLOSE_OVERLAY' });
+  }, [isLg, state.displaySidebar]);
+
+  // デスクトップサイズからモバイルサイズに変わった場合、
+  // デスクトップサイズでは固定表示のサイドバーを閉じる。
+  useEffect(() => {
     if (!isLg) closeSidebar();
   }, [isLg]);
 
