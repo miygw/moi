@@ -2,7 +2,7 @@ import { NextSeo, NextSeoProps } from 'next-seo';
 import { useEffect } from 'react';
 import { useUI } from '../../hooks';
 
-export default function DynamicHead({ ...props }: NextSeoProps) {
+export const DynamicHead = ({ ...props }: NextSeoProps) => {
   const { setPageTitle, pageTitle } = useUI();
   useEffect(() => {
     if (props.title && props.title !== pageTitle) {
@@ -11,4 +11,4 @@ export default function DynamicHead({ ...props }: NextSeoProps) {
   });
 
   return <NextSeo {...props} />;
-}
+};

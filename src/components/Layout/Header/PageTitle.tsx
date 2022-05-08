@@ -1,6 +1,6 @@
 import { useUI } from '../../../hooks';
 
-export default function PageTitle() {
+export const PageTitle = () => {
   const { pageTitle } = useUI();
 
   // TODO: text-ellipsis が効かない。レイアウト維持のための苦肉の策として、overflow-hidden 適用中
@@ -9,4 +9,4 @@ export default function PageTitle() {
       <div className='text-ellipsis whitespace-nowrap'>{pageTitle}</div>
     </div>
   );
-}
+};

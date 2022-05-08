@@ -3,7 +3,7 @@ import Image from 'next/image';
 import path from 'path';
 import { linkConfigs } from '../../../configs/linkConfigs';
 
-export default function Footer() {
+export const Footer = () => {
   const { resolvedTheme } = useTheme();
   const themeDir = resolvedTheme === 'dark' ? 'dark' : 'light';
 
@@ -11,12 +11,7 @@ export default function Footer() {
 
   return (
     <footer className='my-12 text-center text-gray-400'>
-      <a
-        className='m-4'
-        href={
-          linkConfigs.social.filter((info) => info.text === 'GitHub')![0].href
-        }
-      >
+      <a className='m-4' href={linkConfigs.social.GitHub.href}>
         <Image
           className='relative'
           src={path.posix.join('/', themeDir, 'github.svg')}
@@ -25,12 +20,7 @@ export default function Footer() {
           height={logoSize}
         />
       </a>
-      <a
-        className='m-4'
-        href={
-          linkConfigs.social.filter((info) => info.text === 'Twitter')![0].href
-        }
-      >
+      <a className='m-4' href={linkConfigs.social.Twitter.href}>
         <Image
           src={path.posix.join('/', themeDir, 'Twitter.svg')}
           alt='twitter'
@@ -40,4 +30,4 @@ export default function Footer() {
       </a>
     </footer>
   );
-}
+};

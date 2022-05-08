@@ -5,7 +5,7 @@ import {
   GetStaticPropsResult,
 } from 'next';
 import { DynamicHead } from '../../components/Head';
-import { MetaData, View } from '../../components/Writing';
+import { ContentView, MetaDataView } from '../../components/Writing';
 import { typeResolve } from '../../lib/ts/type';
 import {
   getAllPaths,
@@ -19,8 +19,8 @@ export default function Writing({ contentHtml, metaData }: WritingInfo) {
   return (
     <>
       <DynamicHead title={metaData.title} description={metaData.summary} />
-      <View contentHtml={contentHtml} metaData={metaData} />
-      <MetaData metaData={metaData} />
+      <ContentView contentHtml={contentHtml} metaData={metaData} />
+      <MetaDataView metaData={metaData} />
     </>
   );
 }

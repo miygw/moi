@@ -7,7 +7,7 @@ import Providers from '../components/Providers';
 import Head from '../components/Head';
 import { useGAWithRouter } from '../hooks';
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   useGAWithRouter();
   return (
     <>
@@ -20,4 +20,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </Providers>
     </>
   );
-}
+};
+
+export default App;

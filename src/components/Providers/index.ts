@@ -1,2 +1,2 @@
-export { default } from './Providers';
+export { Providers as default } from './Providers';
 export { useUIState, useUIActions } from './UIProvider';

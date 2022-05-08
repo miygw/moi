@@ -5,7 +5,7 @@ export default function Miygw() {
   return (
     <>
       <DynamicHead title={'miygw'} />
-      <div className='my-4 text-center'>
+      <div className='text-center'>
         <Image
           className='static'
           src='/miygw.jpg'

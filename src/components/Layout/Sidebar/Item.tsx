@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { useUI } from '../../../hooks';
 import { SidebarPaddingLeft } from './Sidebar';
 
@@ -22,7 +22,7 @@ type Props = {
   text: string;
 };
 
-export default function Item({ href, text }: Props) {
+export const Item = ({ href, text, children }: PropsWithChildren<Props>) => {
   // このLinkItemが現在URLに対応するなら表示を強調する。
   const [isSelectedState, setIsSelectedState] = useState(false);
   const onSelectedColor = isSelectedState ? `bg-gray-200 dark:bg-zinc-800` : ``;
@@ -42,10 +42,15 @@ export default function Item({ href, text }: Props) {
       className={`${SidebarPaddingLeft} ${onSelectedColor} h-8 hover:bg-sky-200 dark:hover:bg-sky-900`}
     >
       <Link href={href}>
-        <a className='h-full' onClick={() => closeSidebar()}>
-          <div className='h-full w-full'>{text}</div>
+        <a
+          className='flex h-full w-full items-center space-x-2'
+          onClick={() => closeSidebar()}
+        >
+          {/* Imageコンポーネント対応のため改めてスタイルを設定 */}
+          <span className='flex items-center'>{children}</span>
+          <span>{text}</span>
         </a>
       </Link>
     </div>
   );
-}
+};

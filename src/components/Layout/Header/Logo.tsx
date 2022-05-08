@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useUI } from '../../../hooks';
 
-export default function Logo() {
+export const Logo = () => {
   const { displaySidebar, openSidebar, closeSidebar } = useUI();
 
   return (
@@ -12,4 +12,4 @@ export default function Logo() {
       <Image src='/miygw.jpg' alt='logo' width={50} height={50} />
     </div>
   );
-}
+};

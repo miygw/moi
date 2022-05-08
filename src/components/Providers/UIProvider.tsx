@@ -8,8 +8,8 @@ import {
 type UIState = {
   pageTitle: string;
   displaySidebar: boolean;
+  displayOverlay: boolean;
 };
-const initialUIState: UIState = { pageTitle: '', displaySidebar: false };
 
 type UIActionType =
   | { type: 'SET_PAGE_TITLE'; value: string }
@@ -22,25 +22,31 @@ type UIActions = {
   closeSidebar: () => void;
 };
 
-const uiReducer = (state: UIState, action: UIActionType): UIState => {
-  switch (action.type) {
-    case 'SET_PAGE_TITLE':
-      return { ...state, pageTitle: action.value };
-    case 'OPEN_SIDEBAR':
-      return { ...state, displaySidebar: true };
-    case 'CLOSE_SIDEBAR':
-      return { ...state, displaySidebar: false };
-    default:
-      return state;
-  }
-};
-
 // useUIでラップするため、exportしない。
 const UIStateContext = createContext<UIState | null>(null);
 const UIActionsContext = createContext<UIActions | null>(null);
 
 export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [state, dispatch] = useReducer(uiReducer, initialUIState);
+  const initialState: UIState = {
+    pageTitle: '',
+    displaySidebar: false,
+    displayOverlay: false,
+  };
+
+  const reducer = (state: UIState, action: UIActionType): UIState => {
+    switch (action.type) {
+      case 'SET_PAGE_TITLE':
+        return { ...state, pageTitle: action.value };
+      case 'OPEN_SIDEBAR':
+        return { ...state, displaySidebar: true };
+      case 'CLOSE_SIDEBAR':
+        return { ...state, displaySidebar: false };
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const setPageTitle = (value: string) =>
     dispatch({ type: 'SET_PAGE_TITLE', value });
