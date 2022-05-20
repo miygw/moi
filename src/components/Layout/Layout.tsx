@@ -7,10 +7,10 @@ import Sidebar from './Sidebar';
 export const Layout = ({ children }: PropsWithChildren<{}>) => {
   return (
     <div className='text-gray-500 dark:text-gray-400'>
+      <Overlay />
       <Header />
       <div className='flex justify-center'>
         <Sidebar />
-        <Overlay />
         <main className='mx-3 mt-4 lg:max-w-xl xl:max-w-3xl'>{children}</main>
       </div>
       <Footer />
