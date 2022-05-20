@@ -6,7 +6,7 @@ import Sidebar from './Sidebar';
 
 export const Layout = ({ children }: PropsWithChildren<{}>) => {
   return (
-    <div className='mx-auto text-gray-500 dark:text-gray-400'>
+    <div className='text-gray-500 dark:text-gray-400'>
       <Header />
       <div className='flex justify-center'>
         <Sidebar />
