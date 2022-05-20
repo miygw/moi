@@ -1,2 +1,2 @@
-export { default as useGAWithRouter } from './useGAWithRouter';
+export { default as useGoogleAnalytics } from './useGoogleAnalytics';
 export { default as useUI } from './useUI';

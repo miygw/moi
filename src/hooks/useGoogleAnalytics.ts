@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { typeResolve } from '../lib/ts/type';
 
-const useGAWithRouter = () => {
+const useGoogleAnalytics = () => {
   const router = useRouter();
   useEffect(() => {
     const gaHandler = (url: string) => {
@@ -20,4 +20,4 @@ const useGAWithRouter = () => {
   }, [router.events]);
 };
 
-export default useGAWithRouter;
+export default useGoogleAnalytics;
