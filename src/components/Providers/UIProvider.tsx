@@ -6,17 +6,21 @@ import {
   useReducer,
 } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { UIController } from './UIController';
 
-type UIState = {
+export type UIState = {
+  isMobileSize: boolean;
   pageTitle: string;
   displaySidebar: boolean;
   displayOverlay: boolean;
 };
 
-type UIActionType =
+export type UIActionType =
+  | { type: 'SET_IS_MOBILE_SIZE'; value: boolean }
   | { type: 'SET_PAGE_TITLE'; value: string }
   | { type: 'OPEN_SIDEBAR' }
   | { type: 'CLOSE_SIDEBAR' }
+  | { type: 'OPEN_OVERLAY' }
   | { type: 'CLOSE_OVERLAY' };
 
 type UIActions = {
@@ -31,6 +35,7 @@ const UIActionsContext = createContext<UIActions | null>(null);
 
 export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
   const initialState: UIState = {
+    isMobileSize: true,
     pageTitle: '',
     displaySidebar: false,
     displayOverlay: false,
@@ -41,6 +46,8 @@ export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
 
   const reducer = (state: UIState, action: UIActionType): UIState => {
     switch (action.type) {
+      case 'SET_IS_MOBILE_SIZE':
+        return { ...state, isMobileSize: action.value };
       case 'SET_PAGE_TITLE':
         return { ...state, pageTitle: action.value };
       case 'OPEN_SIDEBAR':
@@ -49,8 +56,9 @@ export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
         // デスクトップサイズならサイドバーは常に表示する
         if (isLg) return state;
         return { ...state, displaySidebar: false, displayOverlay: false };
+      case 'OPEN_OVERLAY':
+        return { ...state, displayOverlay: true };
       case 'CLOSE_OVERLAY':
-        console.log('called');
         return { ...state, displayOverlay: false };
       default:
         return state;
@@ -81,6 +89,7 @@ export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
   return (
     <UIStateContext.Provider value={state}>
       <UIActionsContext.Provider value={actions}>
+        <UIController state={state} dispatch={dispatch} />
         {children}
       </UIActionsContext.Provider>
     </UIStateContext.Provider>
