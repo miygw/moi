@@ -5,11 +5,13 @@ import { ThemeChangeButton } from '../../Parts/ThemeChangeButton';
 import { HomeIcon, PencilIcon, LightBulbIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import { Item } from './Item';
+import { useEffect } from 'react';
 
 export const SidebarPaddingLeft = 'pl-6';
 
 export const Sidebar = () => {
   const { displaySidebar } = useUI();
+  useSidebarController();
   const visibility = displaySidebar ? `visible` : `invisible`;
 
   return (
@@ -56,3 +58,18 @@ export const Sidebar = () => {
     </div>
   );
 };
+
+const useSidebarController = () => {
+  const { isMobileSize, closeSidebar } = useUI();
+
+  useEffect(() => {
+    if (!isMobileSize) return;
+    closeSidebar();
+  }, [isMobileSize]);
+};
+
+// // デスクトップサイズからモバイルサイズに変わった場合、
+// // デスクトップサイズでは固定表示のサイドバーを閉じる。
+// useEffect(() => {
+//   if (!isLg) closeSidebar();
+// }, [isLg]);

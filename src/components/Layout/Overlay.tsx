@@ -46,9 +46,3 @@ const useOverlayController = () => {
     if (!isMobileSize && displaySidebar) closeOverlay();
   }, [displaySidebar, isMobileSize]);
 };
-
-// // デスクトップサイズからモバイルサイズに変わった場合、
-// // デスクトップサイズでは固定表示のサイドバーを閉じる。
-// useEffect(() => {
-//   if (!isLg) closeSidebar();
-// }, [isLg]);
