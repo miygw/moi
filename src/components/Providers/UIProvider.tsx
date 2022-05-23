@@ -109,18 +109,3 @@ const useDisplaySizeWatcher = (dispatch: Dispatch<UIActionTypes>) => {
 // For useUI
 export const useUIState = () => useContext(UIStateContext);
 export const useUIActions = () => useContext(UIActionsContext);
-
-// // 1024pxは、Tailwindcssのデフォルトのlgブレークポイントの値。
-// const isLg = useMediaQuery({ minWidth: 1024 });
-
-// // サイドバー表示中のモバイルサイズからデスクトップサイズに変わった場合、
-// // オーバーレイを非表示にする。
-// useEffect(() => {
-//   if (isLg && state.displaySidebar) dispatch({ type: 'CLOSE_OVERLAY' });
-// }, [isLg, state.displaySidebar]);
-
-// // デスクトップサイズからモバイルサイズに変わった場合、
-// // デスクトップサイズでは固定表示のサイドバーを閉じる。
-// useEffect(() => {
-//   if (!isLg) closeSidebar();
-// }, [isLg]);
