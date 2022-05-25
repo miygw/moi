@@ -102,7 +102,9 @@ const createUIActions = (dispatch: Dispatch<UIActionTypes>) => {
 const useDisplaySizeWatcher = (dispatch: Dispatch<UIActionTypes>) => {
   const isMobileSize = !useMediaQuery({ minWidth: 1024 });
   useEffect(() => {
-    dispatch({ type: 'SET_IS_MOBILE_SIZE', value: isMobileSize });
+    isMobileSize
+      ? dispatch({ type: 'SET_IS_MOBILE_SIZE', value: true })
+      : dispatch({ type: 'SET_IS_MOBILE_SIZE', value: false });
   }, [dispatch, isMobileSize]);
 };
 
