@@ -63,7 +63,7 @@ const useSidebarController = () => {
   const { isMobileSize, closeSidebar } = useUI();
 
   useEffect(() => {
-    if (!isMobileSize) return;
+    if (isMobileSize) return;
     closeSidebar();
   }, [isMobileSize]);
 };
