@@ -1,2 +1,2 @@
-export { Head as default } from './Head';
+export { DefaultHead } from './DefaultHead';
 export { DynamicHead } from './DynamicHead';

@@ -1,9 +1,10 @@
+import { useEffect } from 'react';
 import { layoutConfigs } from '../../configs/layoutConfigs';
 import { useUI } from '../../hooks';
 
 export const Overlay = () => {
   const { displayOverlay, closeSidebar } = useUI();
-
+  useOverlayController();
   return (
     <div
       className={`${
@@ -16,4 +17,32 @@ export const Overlay = () => {
       onClick={() => closeSidebar()}
     />
   );
+};
+
+const useOverlayController = () => {
+  const {
+    isMobileSize,
+    displaySidebar,
+    displayOverlay,
+    openOverlay,
+    closeOverlay,
+  } = useUI();
+
+  useEffect(() => {
+    if (displaySidebar) return;
+    closeOverlay();
+  }, [displaySidebar]);
+
+  // モバイルサイズかつサイドバー表示中ならオーバーレイを表示する。
+  useEffect(() => {
+    if (displayOverlay) return;
+    if (!isMobileSize || !displaySidebar) return;
+    openOverlay();
+  }, [displayOverlay, displaySidebar, isMobileSize]);
+
+  // サイドバー表示中のモバイルサイズからデスクトップサイズに変わった場合、
+  // オーバーレイを非表示にする。
+  useEffect(() => {
+    if (!isMobileSize && displaySidebar) closeOverlay();
+  }, [displaySidebar, isMobileSize]);
 };

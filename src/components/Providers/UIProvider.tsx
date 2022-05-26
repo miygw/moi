@@ -1,5 +1,6 @@
 import {
   createContext,
+  Dispatch,
   PropsWithChildren,
   useContext,
   useEffect,
@@ -7,22 +8,27 @@ import {
 } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-type UIState = {
+export type UIState = {
+  isMobileSize: boolean;
   pageTitle: string;
   displaySidebar: boolean;
   displayOverlay: boolean;
 };
 
-type UIActionType =
+export type UIActionTypes =
+  | { type: 'SET_IS_MOBILE_SIZE'; value: boolean }
   | { type: 'SET_PAGE_TITLE'; value: string }
   | { type: 'OPEN_SIDEBAR' }
   | { type: 'CLOSE_SIDEBAR' }
+  | { type: 'OPEN_OVERLAY' }
   | { type: 'CLOSE_OVERLAY' };
 
 type UIActions = {
   setPageTitle: (value: string) => void;
   openSidebar: () => void;
   closeSidebar: () => void;
+  openOverlay: () => void;
+  closeOverlay: () => void;
 };
 
 // useUIでラップするため、exportしない。
@@ -30,54 +36,13 @@ const UIStateContext = createContext<UIState | null>(null);
 const UIActionsContext = createContext<UIActions | null>(null);
 
 export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
-  const initialState: UIState = {
-    pageTitle: '',
-    displaySidebar: false,
-    displayOverlay: false,
-  };
-
-  // 1024pxは、Tailwindcssのデフォルトのlgブレークポイントの値。
-  const isLg = useMediaQuery({ minWidth: 1024 });
-
-  const reducer = (state: UIState, action: UIActionType): UIState => {
-    switch (action.type) {
-      case 'SET_PAGE_TITLE':
-        return { ...state, pageTitle: action.value };
-      case 'OPEN_SIDEBAR':
-        return { ...state, displaySidebar: true, displayOverlay: !isLg };
-      case 'CLOSE_SIDEBAR':
-        // デスクトップサイズならサイドバーは常に表示する
-        if (isLg) return state;
-        return { ...state, displaySidebar: false, displayOverlay: false };
-      case 'CLOSE_OVERLAY':
-        console.log('called');
-        return { ...state, displayOverlay: false };
-      default:
-        return state;
-    }
-  };
-
+  const reducer = createReducer();
+  const initialState = createInitialState();
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const setPageTitle = (value: string) =>
-    dispatch({ type: 'SET_PAGE_TITLE', value });
-  const openSidebar = () => dispatch({ type: 'OPEN_SIDEBAR' });
-  const closeSidebar = () => dispatch({ type: 'CLOSE_SIDEBAR' });
-  // オーバーレイの制御はこのコンポーネントで行うため配信しない。
-  const actions: UIActions = { setPageTitle, openSidebar, closeSidebar };
+  const actions: UIActions = createUIActions(dispatch);
 
-  // サイドバー表示中のモバイルサイズからデスクトップサイズに変わった場合、
-  // オーバーレイを非表示にする。
-  useEffect(() => {
-    if (isLg && state.displaySidebar) dispatch({ type: 'CLOSE_OVERLAY' });
-  }, [isLg, state.displaySidebar]);
-
-  // デスクトップサイズからモバイルサイズに変わった場合、
-  // デスクトップサイズでは固定表示のサイドバーを閉じる。
-  useEffect(() => {
-    if (!isLg) closeSidebar();
-  }, [isLg]);
-
+  useDisplaySizeWatcher(dispatch);
   return (
     <UIStateContext.Provider value={state}>
       <UIActionsContext.Provider value={actions}>
@@ -85,6 +50,61 @@ export const UIProvider = ({ children }: PropsWithChildren<{}>) => {
       </UIActionsContext.Provider>
     </UIStateContext.Provider>
   );
+};
+
+const createInitialState = () => {
+  return {
+    isMobileSize: true,
+    pageTitle: '',
+    displaySidebar: false,
+    displayOverlay: false,
+  } as UIState;
+};
+
+const createReducer = () => {
+  return (state: UIState, actionType: UIActionTypes): UIState => {
+    switch (actionType.type) {
+      case 'SET_IS_MOBILE_SIZE':
+        return { ...state, isMobileSize: actionType.value };
+      case 'SET_PAGE_TITLE':
+        return { ...state, pageTitle: actionType.value };
+      case 'OPEN_SIDEBAR':
+        return { ...state, displaySidebar: true };
+      case 'CLOSE_SIDEBAR':
+        return { ...state, displaySidebar: false };
+      case 'OPEN_OVERLAY':
+        return { ...state, displayOverlay: true };
+      case 'CLOSE_OVERLAY':
+        return { ...state, displayOverlay: false };
+      default:
+        return state;
+    }
+  };
+};
+
+const createUIActions = (dispatch: Dispatch<UIActionTypes>) => {
+  const setPageTitle = (value: string) =>
+    dispatch({ type: 'SET_PAGE_TITLE', value });
+  const openSidebar = () => dispatch({ type: 'OPEN_SIDEBAR' });
+  const closeSidebar = () => dispatch({ type: 'CLOSE_SIDEBAR' });
+  const openOverlay = () => dispatch({ type: 'OPEN_OVERLAY' });
+  const closeOverlay = () => dispatch({ type: 'CLOSE_OVERLAY' });
+
+  return {
+    setPageTitle,
+    openSidebar,
+    closeSidebar,
+    openOverlay,
+    closeOverlay,
+  } as UIActions;
+};
+
+const useDisplaySizeWatcher = (dispatch: Dispatch<UIActionTypes>) => {
+  const isMobileSize = !useMediaQuery({ minWidth: 1024 });
+  useEffect(() => {
+    console.log(`Display size: ${isMobileSize ? 'mobile' : 'desktop'}`);
+    dispatch({ type: 'SET_IS_MOBILE_SIZE', value: isMobileSize });
+  }, [dispatch, isMobileSize]);
 };
 
 // For useUI
