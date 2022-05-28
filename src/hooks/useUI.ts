@@ -3,9 +3,12 @@ import {
   pageTitleState,
   displaySidebarState,
   displayOverlayState,
-} from './../recoil/atoms/uiAtoms';
+} from '../states/atoms/uiAtoms';
 import { SetterOrUpdater, useRecoilValue, useSetRecoilState } from 'recoil';
 
+/**
+ * UIの状態の一覧を表す。
+ */
 type UIStates = {
   isMobileSize: boolean;
   pageTitle: string;
@@ -13,6 +16,9 @@ type UIStates = {
   displayOverlay: boolean;
 };
 
+/**
+ * UIの状態の一覧を取得する。
+ */
 export const useUIStates = () => {
   return {
     isMobileSize: useRecoilValue(isMobileSizeState),
@@ -22,6 +28,9 @@ export const useUIStates = () => {
   } as UIStates;
 };
 
+/**
+ * UIを制御する処理の一覧を表す。
+ */
 type UIActions = {
   setIsMobileSize: SetterOrUpdater<boolean>;
   setPageTitle: SetterOrUpdater<string>;
@@ -29,6 +38,9 @@ type UIActions = {
   setDisplayOverlay: SetterOrUpdater<boolean>;
 };
 
+/**
+ * UIを制御する処理の一覧を取得する。
+ */
 export const useUIActions = () => {
   return {
     setIsMobileSize: useSetRecoilState(isMobileSizeState),
