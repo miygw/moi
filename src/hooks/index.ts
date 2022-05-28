@@ -1,2 +1,2 @@
 export { default as useGoogleAnalytics } from './useGoogleAnalytics';
-export { default as useUI } from './useUI';
+export { useUIStates, useUIActions } from './useUI';

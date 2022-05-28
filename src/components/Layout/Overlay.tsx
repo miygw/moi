@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import { layoutConfigs } from '../../configs/layoutConfigs';
-import { useUI } from '../../hooks';
+import { useUIActions, useUIStates } from '../../hooks';
 
 export const Overlay = () => {
-  const { displayOverlay, closeSidebar } = useUI();
+  const { displayOverlay } = useUIStates();
+  const { setDisplaySidebar } = useUIActions();
+
   useOverlayController();
+
   return (
     <div
       className={`${
@@ -14,35 +17,39 @@ export const Overlay = () => {
       }
       ${layoutConfigs.zIndex.overlay}
       fixed inset-0 bg-black bg-opacity-30`}
-      onClick={() => closeSidebar()}
+      onClick={() => setDisplaySidebar(false)}
     />
   );
 };
 
+/**
+ * オーバーレイ表示状態の自動制御を行う。
+ */
 const useOverlayController = () => {
-  const {
-    isMobileSize,
-    displaySidebar,
-    displayOverlay,
-    openOverlay,
-    closeOverlay,
-  } = useUI();
+  const { ...states } = useUIStates();
+  const { ...actions } = useUIActions();
 
+  // TODO 意図を忘れた
   useEffect(() => {
-    if (displaySidebar) return;
-    closeOverlay();
-  }, [displaySidebar]);
+    if (states.displaySidebar) return;
+    actions.setDisplayOverlay(false);
+  }, [actions, states.displaySidebar]);
 
-  // モバイルサイズかつサイドバー表示中ならオーバーレイを表示する。
+  // モバイルサイズでサイドバー表示ならオーバーレイを表示する。
   useEffect(() => {
-    if (displayOverlay) return;
-    if (!isMobileSize || !displaySidebar) return;
-    openOverlay();
-  }, [displayOverlay, displaySidebar, isMobileSize]);
+    if (!states.isMobileSize || !states.displaySidebar) return;
+    actions.setDisplayOverlay(true);
+  }, [
+    actions,
+    states.displayOverlay,
+    states.displaySidebar,
+    states.isMobileSize,
+  ]);
 
   // サイドバー表示中のモバイルサイズからデスクトップサイズに変わった場合、
   // オーバーレイを非表示にする。
   useEffect(() => {
-    if (!isMobileSize && displaySidebar) closeOverlay();
-  }, [displaySidebar, isMobileSize]);
+    if (!states.isMobileSize && states.displaySidebar)
+      actions.setDisplayOverlay(false);
+  }, [actions, states.displaySidebar, states.isMobileSize]);
 };

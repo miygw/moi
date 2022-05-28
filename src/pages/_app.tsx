@@ -6,18 +6,21 @@ import Layout from '../components/Layout';
 import Providers from '../components/Providers';
 import { DefaultHead } from '../components/Head';
 import { useGoogleAnalytics } from '../hooks';
+import { RecoilRoot } from 'recoil';
 
 const App = ({ Component, pageProps }: AppProps) => {
   useGoogleAnalytics();
   return (
     <>
       <DefaultHead />
-      <Providers>
-        <Layout>
-          <DefaultSeo {...defaultSeoProps} />
-          <Component {...pageProps} />
-        </Layout>
-      </Providers>
+      <RecoilRoot>
+        <Providers>
+          <Layout>
+            <DefaultSeo {...defaultSeoProps} />
+            <Component {...pageProps} />
+          </Layout>
+        </Providers>
+      </RecoilRoot>
     </>
   );
 };

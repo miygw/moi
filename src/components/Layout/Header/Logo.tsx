@@ -1,12 +1,17 @@
 import Image from 'next/image';
-import { useUI } from '../../../hooks';
+import { useUIActions, useUIStates } from '../../../hooks';
 
 export const Logo = () => {
-  const { displaySidebar, openSidebar, closeSidebar } = useUI();
+  const { displaySidebar } = useUIStates();
+  const { setDisplaySidebar } = useUIActions();
 
   return (
     <div
-      onClick={displaySidebar ? () => closeSidebar() : () => openSidebar()}
+      onClick={
+        displaySidebar
+          ? () => setDisplaySidebar(false)
+          : () => setDisplaySidebar(true)
+      }
       className='min-w-fit'
     >
       <Image src='/miygw.jpg' alt='logo' width={50} height={50} />
