@@ -1,16 +1,16 @@
 import { layoutConfigs } from '../../../configs/layoutConfigs';
 import { linkConfigs } from '../../../configs/linkConfigs';
-import { useUI } from '../../../hooks';
 import { ThemeChangeButton } from '../../Parts/ThemeChangeButton';
 import { HomeIcon, PencilIcon, LightBulbIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import { Item } from './Item';
 import { useEffect } from 'react';
+import { useUIActions, useUIStates } from '../../../hooks';
 
 export const SidebarPaddingLeft = 'pl-6';
 
 export const Sidebar = () => {
-  const { displaySidebar } = useUI();
+  const { displaySidebar } = useUIStates();
   useSidebarController();
   const visibility = displaySidebar ? `visible` : `invisible`;
 
@@ -59,17 +59,15 @@ export const Sidebar = () => {
   );
 };
 
+/**
+ * サイドバー表示状態の自動制御を行う。
+ */
 const useSidebarController = () => {
-  const { isMobileSize, closeSidebar } = useUI();
+  const { isMobileSize } = useUIStates();
+  const { setDisplaySidebar } = useUIActions();
 
   useEffect(() => {
     if (isMobileSize) return;
-    closeSidebar();
-  }, [isMobileSize]);
+    setDisplaySidebar(false);
+  }, [isMobileSize, setDisplaySidebar]);
 };
-
-// // デスクトップサイズからモバイルサイズに変わった場合、
-// // デスクトップサイズでは固定表示のサイドバーを閉じる。
-// useEffect(() => {
-//   if (!isLg) closeSidebar();
-// }, [isLg]);

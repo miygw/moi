@@ -1,7 +1,7 @@
-import { useUI } from '../../../hooks';
+import { useUIStates } from '../../../hooks';
 
 export const PageTitle = () => {
-  const { pageTitle } = useUI();
+  const { pageTitle } = useUIStates();
 
   // TODO: text-ellipsis が効かない。レイアウト維持のための苦肉の策として、overflow-hidden 適用中
   return (

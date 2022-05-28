@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { useUI } from '../../../hooks';
+import { useUIActions } from '../../../hooks';
 import { SidebarPaddingLeft } from './Sidebar';
 
 /**
@@ -35,7 +35,7 @@ export const Item = ({ href, text, children }: PropsWithChildren<Props>) => {
   }, [href, router.pathname]);
 
   // LinkItemクリック => サイドバーを閉じる処理
-  const { closeSidebar } = useUI();
+  const { setDisplaySidebar } = useUIActions();
 
   return (
     <div
@@ -44,7 +44,7 @@ export const Item = ({ href, text, children }: PropsWithChildren<Props>) => {
       <Link href={href}>
         <a
           className='flex h-full w-full items-center space-x-2'
-          onClick={() => closeSidebar()}
+          onClick={() => setDisplaySidebar(false)}
         >
           {/* Imageコンポーネント対応のため改めてスタイルを設定 */}
           <span className='flex items-center'>{children}</span>
