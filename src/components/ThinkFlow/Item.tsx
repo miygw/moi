@@ -1,6 +1,6 @@
 import { think_flow } from '@prisma/client';
 import Link from 'next/link';
-import { typeResolve } from '../../lib/ts/type';
+import { typeResolve } from '~/lib/ts/type';
 
 type Props = {
   think: think_flow;

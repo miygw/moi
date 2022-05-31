@@ -2,10 +2,10 @@ import path from 'path';
 import { remark } from 'remark';
 import html from 'remark-html';
 import gfm from 'remark-gfm';
-import { getRepoData, GitHubResponseData } from '../github/api';
-import { typeResolve } from '../ts/type';
 import matter from 'gray-matter';
-import { githubConfigs } from '../../configs/githubConfigs';
+import { githubConfigs } from '~/configs/githubConfigs';
+import { GitHubResponseData, getRepoData } from '../github/api';
+import { typeResolve } from '../ts/type';
 
 /**
  * 記事の情報を表す型。

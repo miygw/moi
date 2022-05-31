@@ -1,4 +1,4 @@
-import { useUIStates } from '../../../hooks';
+import { useUIStates } from '~/hooks';
 
 export const PageTitle = () => {
   const { pageTitle } = useUIStates();

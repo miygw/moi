@@ -1,4 +1,4 @@
-import { layoutConfigs } from '../../../configs/layoutConfigs';
+import { layoutConfigs } from '~/configs/layoutConfigs';
 import { Logo } from './Logo';
 import { PageTitle } from './PageTitle';
 

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { DynamicHead } from '../../components/Head';
+import { DynamicHead } from '~/components/Head';
 
 export default function Miygw() {
   return (

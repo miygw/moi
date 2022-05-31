@@ -1,4 +1,4 @@
-import { DynamicHead } from '../components/Head';
+import { DynamicHead } from '~/components/Head';
 
 export default function Home() {
   return (

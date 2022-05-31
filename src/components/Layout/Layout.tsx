@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { useDisplaySize } from '../../hooks/useDisplaySize';
+import { useDisplaySize } from '~/hooks';
 import Footer from './Footer';
 import Header from './Header';
 import { Overlay } from './Overlay';

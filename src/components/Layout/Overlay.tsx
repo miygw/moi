@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { layoutConfigs } from '../../configs/layoutConfigs';
-import { useUIActions, useUIStates } from '../../hooks';
+import { layoutConfigs } from '~/configs/layoutConfigs';
+import { useUIStates, useUIActions } from '~/hooks';
 
 export const Overlay = () => {
   const { displayOverlay } = useUIStates();

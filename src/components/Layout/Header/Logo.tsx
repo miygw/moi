@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useUIActions, useUIStates } from '../../../hooks';
+import { useUIActions, useUIStates } from '~/hooks';
 
 export const Logo = () => {
   const { displaySidebar } = useUIStates();

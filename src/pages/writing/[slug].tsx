@@ -4,15 +4,15 @@ import {
   GetStaticProps,
   GetStaticPropsResult,
 } from 'next';
-import { DynamicHead } from '../../components/Head';
-import { ContentView, MetaDataView } from '../../components/Writing';
-import { typeResolve } from '../../lib/ts/type';
+import { DynamicHead } from '~/components/Head';
+import { ContentView, MetaDataView } from '~/components/Writing';
+import { typeResolve } from '~/lib/ts/type';
 import {
-  getAllPaths,
-  getWritingInfo,
   WritingInfo,
-} from '../../lib/writing/getWriting';
-import { SlugParams } from '../../types/pages';
+  getWritingInfo,
+  getAllPaths,
+} from '~/lib/writing/getWriting';
+import { SlugParams } from '~/types/pages';
 
 export default function Writing({ contentHtml, metaData }: WritingInfo) {
   // TODO: 上部に戻る、下部に次の記事・前の記事
