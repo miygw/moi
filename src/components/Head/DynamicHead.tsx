@@ -1,6 +1,6 @@
 import { NextSeo, NextSeoProps } from 'next-seo';
 import { useEffect } from 'react';
-import { useUIActions, useUIStates } from '../../hooks';
+import { useUIStates, useUIActions } from '~/hooks';
 
 export const DynamicHead = ({ ...props }: NextSeoProps) => {
   const { pageTitle } = useUIStates();

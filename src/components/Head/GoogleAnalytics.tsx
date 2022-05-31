@@ -1,5 +1,5 @@
 import Script from 'next/script';
-import { typeResolve } from '../../lib/ts/type';
+import { typeResolve } from '~/lib/ts/type';
 
 export const GoogleAnalytics = () => {
   return (

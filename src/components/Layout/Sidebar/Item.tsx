@@ -1,7 +1,7 @@
+import { PropsWithChildren, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { PropsWithChildren, useEffect, useState } from 'react';
-import { useUIActions } from '../../../hooks';
+import { useUIActions } from '~/hooks';
 import { SidebarPaddingLeft } from './Sidebar';
 
 /**

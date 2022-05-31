@@ -1,8 +1,8 @@
 import { PrismaClient, think_flow } from '@prisma/client';
 import { GetStaticProps } from 'next';
-import { DynamicHead } from '../../components/Head';
-import ThinkFlow from '../../components/ThinkFlow';
-import { shuffle } from '../../lib/extensions/arrayExtension';
+import { DynamicHead } from '~/components/Head';
+import ThinkFlow from '~/components/ThinkFlow';
+import { shuffle } from '~/lib/extensions/arrayExtension';
 
 type Props = {
   thinkFlows: think_flow[];

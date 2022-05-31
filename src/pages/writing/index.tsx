@@ -1,11 +1,8 @@
 import { isBefore } from 'date-fns';
 import { GetStaticProps, GetStaticPropsResult } from 'next';
-import { DynamicHead } from '../../components/Head';
-import { Summary } from '../../components/Writing';
-import {
-  getWritingInfos,
-  MetaData as MetaData,
-} from '../../lib/writing/getWriting';
+import { DynamicHead } from '~/components/Head';
+import { Summary } from '~/components/Writing';
+import { MetaData, getWritingInfos } from '~/lib/writing/getWriting';
 
 type Props = {
   metaDataArray: MetaData[];
