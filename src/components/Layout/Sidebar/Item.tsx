@@ -4,19 +4,6 @@ import { useRouter } from 'next/router';
 import { useUIActions } from '~/hooks';
 import { SidebarPaddingLeft } from './Sidebar';
 
-/**
- * 「actualPath が parentPath と一致、または parentPath のサブページである」が成り立つかを判断する。
- */
-const isChildrenOrMatchPathName = (parentPath: string, actualPath: string) => {
-  // ルートパスは任意のパスと前方一致するので、ルートパスであるかは完全一致で評価する。
-  if (parentPath === '/') {
-    if (parentPath === actualPath) return true;
-    else return false;
-  }
-
-  return actualPath.indexOf(parentPath) === 0;
-};
-
 type Props = {
   href: string;
   text: string;
@@ -53,4 +40,17 @@ export const Item = ({ href, text, children }: PropsWithChildren<Props>) => {
       </Link>
     </div>
   );
+};
+
+/**
+ * 「actualPath が parentPath と一致、または parentPath のサブページである」が成り立つかを判断する。
+ */
+const isChildrenOrMatchPathName = (parentPath: string, actualPath: string) => {
+  // ルートパスは任意のパスと前方一致するので、ルートパスであるかは完全一致で評価する。
+  if (parentPath === '/') {
+    if (parentPath === actualPath) return true;
+    else return false;
+  }
+
+  return actualPath.indexOf(parentPath) === 0;
 };
