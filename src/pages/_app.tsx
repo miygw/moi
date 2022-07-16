@@ -8,7 +8,7 @@ import Providers from '~/components/Providers';
 import { defaultSeoProps } from '~/configs/seoConfigs';
 import { useGoogleAnalytics } from '~/hooks';
 
-const App = ({ Component, pageProps }: AppProps) => {
+export default function App({ Component, pageProps }: AppProps) {
   useGoogleAnalytics();
   return (
     <>
@@ -23,6 +23,4 @@ const App = ({ Component, pageProps }: AppProps) => {
       </RecoilRoot>
     </>
   );
-};
-
-export default App;
+}

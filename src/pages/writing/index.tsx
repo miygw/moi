@@ -17,7 +17,7 @@ export default function WritingIndexPage(props: Props) {
   );
 }
 
-export const getStaticProps = async () => {
+export async function getStaticProps() {
   const infos = await getWritingInfos();
   const raw = infos.map(({ metaData }) => metaData);
   // 日付降順にソート
@@ -26,4 +26,4 @@ export const getStaticProps = async () => {
   );
 
   return { props: { sortedMetadataList } };
-};
+}

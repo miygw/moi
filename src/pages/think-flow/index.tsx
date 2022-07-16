@@ -15,11 +15,11 @@ export default function ThinkFlowPage(props: Props) {
   );
 }
 
-export const getStaticProps = async () => {
+export async function getStaticProps() {
   const pc = new PrismaClient();
   const raw = await pc.think_flow.findMany();
   const parsed = JSON.parse(JSON.stringify(raw));
   const shuffledThunkFlows = shuffle<think_flow>(parsed);
 
   return { props: { shuffledThunkFlows } };
-};
+}
