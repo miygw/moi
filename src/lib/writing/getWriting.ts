@@ -3,7 +3,7 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import gfm from 'remark-gfm';
 import matter from 'gray-matter';
-import { githubConfigs } from '~/configs/githubConfigs';
+import { githubConfigs } from '~/constants/githubConfigs';
 import { GitHubResponseData, getRepoData } from '../github/api';
 import { typeResolve } from '../ts/type';
 

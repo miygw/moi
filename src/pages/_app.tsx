@@ -5,8 +5,9 @@ import { RecoilRoot } from 'recoil';
 import { FixedHead } from '~/components/Head';
 import Layout from '~/components/Layout';
 import Providers from '~/components/Providers';
-import { defaultSeoProps } from '~/configs/seoConfigs';
+
 import { useGoogleAnalytics } from '~/hooks';
+import { defaultSeoProps } from '~/constants/seoConfigs';
 
 export default function App({ Component, pageProps }: AppProps) {
   useGoogleAnalytics();
