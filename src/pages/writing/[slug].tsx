@@ -1,56 +1,37 @@
 import {
   GetStaticPaths,
-  GetStaticPathsResult,
-  GetStaticProps,
-  GetStaticPropsResult,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
 } from 'next';
 import { DynamicHead } from '~/components/Head';
 import { ContentView, MetaDataView } from '~/components/Writing';
-import { typeResolve } from '~/lib/ts/type';
-import {
-  WritingInfo,
-  getWritingInfo,
-  getAllPaths,
-} from '~/lib/writing/getWriting';
-import { SlugParams } from '~/types/pages';
+import { getWritingInfo, getAllPaths } from '~/lib/writing/getWriting';
 
-export default function Writing({ contentHtml, metaData }: WritingInfo) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
+
+export default function WritingContentPage(props: Props) {
   // TODO: 上部に戻る、下部に次の記事・前の記事
   return (
     <>
-      <DynamicHead title={metaData.title} description={metaData.summary} />
-      <ContentView contentHtml={contentHtml} metaData={metaData} />
-      <MetaDataView metaData={metaData} />
+      <DynamicHead
+        title={props.metaData.title}
+        description={props.metaData.summary}
+      />
+      <ContentView contentHtml={props.contentHtml} metaData={props.metaData} />
+      <MetaDataView metaData={props.metaData} />
     </>
   );
 }
 
-export const getStaticProps: GetStaticProps<WritingInfo, SlugParams> = async (
-  context
-) => {
-  const slugParams = typeResolve<SlugParams>(context.params);
-  const writingInfo = await getWritingInfo(slugParams.slug);
-  const result: GetStaticPropsResult<WritingInfo> = {
-    props: writingInfo,
-  };
+export const getStaticPaths: GetStaticPaths = async () => {
+  const slugs = await getAllPaths();
+  const paths = slugs.map((slug) => ({ params: { slug } }));
 
-  return result;
+  return { paths, fallback: false };
 };
 
-export const getStaticPaths: GetStaticPaths<SlugParams> = async () => {
-  const paths = await getAllPaths();
-  const allParams = paths.map((path) => {
-    const params: { params: SlugParams } = {
-      params: { slug: path },
-    };
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  const info = await getWritingInfo(context.params!['slug'] as string);
 
-    return params;
-  });
-
-  const result: GetStaticPathsResult<SlugParams> = {
-    paths: allParams,
-    fallback: false,
-  };
-
-  return result;
+  return { props: info };
 };

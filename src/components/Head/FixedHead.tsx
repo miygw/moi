@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from './GoogleAnalytics';
 
-export const DefaultHead = () => {
+export const FixedHead = () => {
   return <GoogleAnalytics />;
 };
