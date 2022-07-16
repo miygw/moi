@@ -20,6 +20,7 @@ export default function WritingIndexPage(props: Props) {
 export const getStaticProps = async () => {
   const infos = await getWritingInfos();
   const raw = infos.map(({ metaData }) => metaData);
+  // 日付降順にソート
   const sortedMetadataList = raw.sort((metaData1, metaData2) =>
     isBefore(Date.parse(metaData1.date), Date.parse(metaData2.date)) ? 1 : -1
   );
