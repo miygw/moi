@@ -1,15 +1,14 @@
 import { MetaData } from '../../lib/writing/getWriting';
 
-type Props = {
-  metaData: MetaData;
-};
+type Props = { metaData: MetaData };
 
-export const MetaDataView = ({ metaData }: Props) => {
+export const MetaDataView = (props: Props) => {
   const elements = [
-    `title: ${metaData.title}`,
-    `date: ${metaData.date}`,
-    `summary: ${metaData.summary}`,
+    `title: ${props.metaData.title}`,
+    `date: ${props.metaData.date}`,
+    `summary: ${props.metaData.summary}`,
   ];
+
   return (
     <div className='border-t border-gray-400  py-4 text-right'>
       <ul className='xl:mr-8'>
