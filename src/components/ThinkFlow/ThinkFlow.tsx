@@ -1,14 +1,12 @@
 import { think_flow } from '@prisma/client';
 import { Item } from './Item';
 
-type Props = {
-  thinkFlows: think_flow[];
-};
+type Props = { thinkFlows: think_flow[] };
 
-export const ThinkFlow = ({ thinkFlows }: Props) => {
+export const ThinkFlow = (props: Props) => {
   return (
     <>
-      {thinkFlows.map((thinkFlow) => (
+      {props.thinkFlows.map((thinkFlow) => (
         <Item key={thinkFlow.id} think={thinkFlow} />
       ))}
     </>

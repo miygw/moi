@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { HomeIcon, PencilIcon, LightBulbIcon } from '@heroicons/react/solid';
 import { Item } from './Item';
 import ThemeChangeButton from '~/components/Parts';
-import { layoutConfigs } from '~/configs/layoutConfigs';
-import { linkConfigs } from '~/configs/linkConfigs';
 import { useUIStates, useUIActions } from '~/hooks';
+import { layoutConfigs } from '~/constants/layoutConfigs';
+import { linkConfigs } from '~/constants/linkConfigs';
 
 export const SidebarPaddingLeft = 'pl-6';
 

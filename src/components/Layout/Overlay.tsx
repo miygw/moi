@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { layoutConfigs } from '~/configs/layoutConfigs';
+import { layoutConfigs } from '~/constants/layoutConfigs';
 import { useUIStates, useUIActions } from '~/hooks';
 
 export const Overlay = () => {

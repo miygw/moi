@@ -2,7 +2,7 @@ import { InferGetStaticPropsType } from 'next';
 import { isBefore } from 'date-fns';
 import { DynamicHead } from '~/components/Head';
 import { Summary } from '~/components/Writing';
-import { getWritingInfos } from '~/lib/writing/getWriting';
+import { fetchAllInfos } from '~/lib/writing/getWriting';
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -10,20 +10,20 @@ export default function WritingIndexPage(props: Props) {
   return (
     <>
       <DynamicHead title='writing' />
-      {props.sortedMetadataList.map((metaData) => (
+      {props.metadataList.map((metaData) => (
         <Summary key={metaData.title} metaData={metaData} />
       ))}
     </>
   );
 }
 
-export const getStaticProps = async () => {
-  const infos = await getWritingInfos();
+export async function getStaticProps() {
+  const infos = await fetchAllInfos();
   const raw = infos.map(({ metaData }) => metaData);
   // 日付降順にソート
-  const sortedMetadataList = raw.sort((metaData1, metaData2) =>
+  const sorted = raw.sort((metaData1, metaData2) =>
     isBefore(Date.parse(metaData1.date), Date.parse(metaData2.date)) ? 1 : -1
   );
 
-  return { props: { sortedMetadataList } };
-};
+  return { props: { metadataList: sorted } };
+}
