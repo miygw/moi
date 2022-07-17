@@ -1,6 +1,12 @@
 import { ThemeProvider } from 'next-themes';
-import { PropsWithChildren } from 'react';
+import { ApolloProvider } from '@apollo/client';
+import { ReactNode } from 'react';
+import { createClient } from '~/lib/apollo';
 
-export const Providers = ({ children }: PropsWithChildren<{}>) => {
-  return <ThemeProvider attribute='class'>{children}</ThemeProvider>;
+export const Providers = ({ children }: { children: ReactNode }) => {
+  return (
+    <ThemeProvider attribute='class'>
+      <ApolloProvider client={createClient()}>{children}</ApolloProvider>
+    </ThemeProvider>
+  );
 };

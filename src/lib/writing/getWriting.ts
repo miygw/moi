@@ -27,15 +27,15 @@ type RawWritingInfo = {
 export const fetchInfo = async (slug: string) => {
   // TODO: posixの必要性があるか調査
   const filePath = path.posix.join(
-    githubConfigs.api.dirPath,
+    githubConfigs.rest.dirPath,
     slug,
-    githubConfigs.api.fileName
+    githubConfigs.rest.fileName
   );
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
   const fileData = typeResolve<GitHubResponseData>(
     await getRepoData(
-      githubConfigs.api.ownerName,
-      githubConfigs.api.repoName,
+      githubConfigs.rest.ownerName,
+      githubConfigs.rest.repoName,
       filePath
     )
   );
@@ -85,9 +85,9 @@ const markdownToHtml = async (markdown: string) => {
 
 const fetchAll = async () => {
   const dirDataAll = await getRepoData(
-    githubConfigs.api.ownerName,
-    githubConfigs.api.repoName,
-    githubConfigs.api.dirPath
+    githubConfigs.rest.ownerName,
+    githubConfigs.rest.repoName,
+    githubConfigs.rest.dirPath
   );
   // writing直下のファイルは除外し、ディレクトリ情報だけにする。
   return dirDataAll.filter((data) => data.type === 'dir');
@@ -95,12 +95,12 @@ const fetchAll = async () => {
 
 const fetchAllRawInfos = async (dirData: GitHubResponseData) => {
   const dirPath = dirData.path;
-  const filePath = path.posix.join(dirPath, githubConfigs.api.fileName);
+  const filePath = path.posix.join(dirPath, githubConfigs.rest.fileName);
   // TODO: これでうまくいく理由が理解できていない。<T>(T[]) = T となるということか。
   const fileData = typeResolve<GitHubResponseData>(
     await getRepoData(
-      githubConfigs.api.ownerName,
-      githubConfigs.api.repoName,
+      githubConfigs.rest.ownerName,
+      githubConfigs.rest.repoName,
       filePath
     )
   );
