@@ -1,7 +1,7 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { DynamicHead } from '~/components/Head';
 import { ContentView, MetaDataView } from '~/components/Writing';
-import { getWritingInfo, getAllPaths } from '~/lib/writing/getWriting';
+import { fetchInfo, getAllPaths } from '~/lib/writing/getWriting';
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const info = await getWritingInfo(context.params!['slug'] as string);
+  const info = await fetchInfo(context.params!['slug'] as string);
 
   return { props: info };
 }
