@@ -1,6 +1,6 @@
-import { MetaData } from '../../lib/writing/getWriting';
+import { MetaDataBase } from '~/lib/server/markdown';
 
-type Props = { metaData: MetaData };
+type Props = { metaData: MetaDataBase };
 
 export const MetaDataView = (props: Props) => {
   const elements = [

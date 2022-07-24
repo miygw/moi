@@ -1,7 +1,7 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { DynamicHead } from '~/components/Head';
 import { ContentView, MetaDataView } from '~/components/Writing';
-import { fetchInfo, getAllPaths } from '~/lib/writing/getWriting';
+import { getAllSlugs, getContent } from '~/lib/server/markdown';
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -13,21 +13,21 @@ export default function WritingContentPage(props: Props) {
         title={props.metaData.title}
         description={props.metaData.summary}
       />
-      <ContentView contentHtml={props.contentHtml} metaData={props.metaData} />
+      <ContentView markdown={props.markdown} />
       <MetaDataView metaData={props.metaData} />
     </>
   );
 }
 
 export async function getStaticPaths() {
-  const slugs = await getAllPaths();
+  const slugs = await getAllSlugs();
   const paths = slugs.map((slug) => ({ params: { slug } }));
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const info = await fetchInfo(context.params!['slug'] as string);
+  const info = await getContent(context.params!['slug'] as string);
 
   return { props: info };
 }

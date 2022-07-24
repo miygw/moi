@@ -1,9 +1,9 @@
-import { WritingInfo } from '../../lib/writing/getWriting';
+type Props = { markdown: string };
 
-export const ContentView = ({ contentHtml }: WritingInfo) => {
+export const ContentView = (props: Props) => {
   return (
     <article className='prose mx-auto prose-img:mx-auto dark:prose-invert md:prose-lg'>
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      <div dangerouslySetInnerHTML={{ __html: props.markdown }} />
     </article>
   );
 };
