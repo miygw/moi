@@ -1,6 +1,6 @@
-import { useTheme } from 'next-themes';
-import Image from 'next/image';
 import path from 'path';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
 import { linkConfigs } from '~/constants/linkConfigs';
 
 export const Footer = () => {

@@ -1,20 +1,15 @@
-import { PropsWithChildren } from 'react';
+import { ReactNode } from 'react';
 import { useDisplaySize } from '~/hooks';
-import Footer from './Footer';
-import Header from './Header';
-import { Overlay } from './Overlay';
-import Sidebar from './Sidebar';
+import Header from '../Header';
+import Footer from '../Footer';
+import { MainWrapper } from './MainWrapper';
 
-export const Layout = ({ children }: PropsWithChildren<{}>) => {
+export const Layout = ({ children }: { children: ReactNode }) => {
   useDisplaySize();
   return (
-    <div className='text-gray-500 dark:text-gray-400'>
-      <Overlay />
+    <div className='mx-auto max-w-5xl'>
       <Header />
-      <div className='flex justify-center'>
-        <Sidebar />
-        <main className='mx-3 mt-4 lg:max-w-xl xl:max-w-3xl'>{children}</main>
-      </div>
+      <MainWrapper>{children}</MainWrapper>
       <Footer />
     </div>
   );

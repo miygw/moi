@@ -1,6 +1,6 @@
 import { DynamicHead } from '~/components/Head';
 
-export default function Home() {
+export default function RootPage() {
   return (
     <>
       <DynamicHead title='Home' description='Main page.' />
