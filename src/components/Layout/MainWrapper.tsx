@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export const MainWrapper = ({ children }: { children: ReactNode }) => {
   return (
-    <div className='mx-2'>
+    <div className='m-2'>
       <main>{children}</main>
     </div>
   );

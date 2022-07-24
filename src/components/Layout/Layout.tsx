@@ -4,6 +4,9 @@ import Header from '../Header';
 import Footer from '../Footer';
 import { MainWrapper } from './MainWrapper';
 
+/**
+ * アプリケーションの共通レイアウト。
+ */
 export const Layout = ({ children }: { children: ReactNode }) => {
   useDisplaySize();
   return (
