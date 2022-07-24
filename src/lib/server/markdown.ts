@@ -10,9 +10,6 @@ export type MetaDataBase = {
   summary?: string;
 };
 
-/** slug情報付きのメタデータ */
-export type MetaDataWithSlug = { slug: string } & MetaDataBase;
-
 /** マークダウンファイルの情報 */
 export type Markdown<T extends MetaDataBase> = {
   /** [slug] の slug。 */
@@ -59,7 +56,7 @@ export const getContent = async <T extends MetaDataBase>(slug: string) => {
   const contents = await octokit.getContents(resolvedPath);
   if (contents.length > 1) throw new Error('writing.mdが複数個存在していた。');
 
-  const markdown = Buffer.from(contents[0].content!, 'base64').toString();
+  const markdown = contents[0].content!;
 
   return {
     slug,

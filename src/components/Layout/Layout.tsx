@@ -12,7 +12,9 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className='mx-auto max-w-5xl'>
       <Header />
+      <div className='m-2 border border-zinc-800' />
       <MainWrapper>{children}</MainWrapper>
+      <div className='m-2 border border-zinc-800' />
       <Footer />
     </div>
   );

@@ -58,6 +58,5 @@ export const getContents = async (path: string) => {
 
 /** 与えられた文字列をbase64でデコードする。 */
 const Decode = (encoded: string, encoding: BufferEncoding = 'base64') => {
-  const buffer = Buffer.from(encoded, encoding);
-  return buffer.toString();
+  return Buffer.from(encoded, encoding).toString();
 };

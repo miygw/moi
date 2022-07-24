@@ -1,8 +1,9 @@
 import { InferGetStaticPropsType } from 'next';
 import { isBefore } from 'date-fns';
 import { DynamicHead } from '~/components/Head';
-import { Summary } from '~/components/Writing';
+
 import { getIndexInfo } from '~/lib/server/markdown';
+import { Summary } from '~/components/Markdown';
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 

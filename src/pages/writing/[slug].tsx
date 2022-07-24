@@ -1,6 +1,6 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { DynamicHead } from '~/components/Head';
-import { ContentView, MetaDataView } from '~/components/Writing';
+import { ContentView, MetaDataView } from '~/components/Markdown';
 import { getAllSlugs, getContent } from '~/lib/server/markdown';
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
