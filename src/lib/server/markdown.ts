@@ -48,14 +48,7 @@ export const getIndexInfo = async <T extends MetaDataBase>() => {
 
 /** 指定されたslugのwriting.mdを取得する。 */
 export const getContent = async <T extends MetaDataBase>(slug: string) => {
-  const resolvedPath = path.posix.join(
-    githubConfigs.api.dirPath,
-    slug,
-    githubConfigs.api.fileName
-  );
-  const contents = await octokit.getContents(resolvedPath);
-  if (contents.length > 1) throw new Error('writing.mdが複数個存在していた。');
-
+  const contents = await octokit.getContents(resolveFilePath(slug));
   const markdown = contents[0].content!;
 
   return {
